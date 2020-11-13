@@ -21,7 +21,7 @@ function App() {
   const updateToken=(newToken) => {
     localStorage.setItem('token', newToken); 
     setSessionToken(newToken); 
-    console.log(sessionToken);
+    console.log(newToken); //state var will not display updated value if called immediately after being set
   }
 
   const clearToken= () => {

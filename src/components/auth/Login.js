@@ -31,7 +31,7 @@ const Login = (props) => {
                 name="email"
                 placeholder="Email"
                 value={email}
-                onChange={(e) => { setEmail(e.target.value); console.log(e); }}
+                onChange={(e) => setEmail(e.target.value)}
                 required />
             <br />
 

@@ -4,8 +4,11 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
-import Auth from './components/auth/Auth';
 import Home from './components/Home/Home';
+import Auth from './components/auth/Auth';  
+import Read from './components/Shelves/Read';
+import Reading from './components/Shelves/Reading';
+import ToRead from './components/Shelves/ToRead';
 
 
 function App() {
@@ -34,7 +37,18 @@ function App() {
     return (sessionToken === localStorage.getItem('token') ? <Home token={sessionToken} /> : <Auth updateToken={updateToken} />)
   }
 
+  //LC added this --- we need to pass the token to all the components here, so list your components just like Read, Reading, ToRead!
+  const protectedViews = () => {
+    return(sessionToken === localStorage.getItem('token') 
+    ?<div> 
+      <Read token={sessionToken}/>
 
+    </div>
+    : <Auth updateToken={updateToken}/>
+    )
+  }
+
+  //LC addded the line running protectedViews also
   return (
 
     
@@ -45,7 +59,6 @@ function App() {
         {/* {navbar goes here clickLogout={clearToken}/>} */}
       </div>
  
-
   );
 }
 

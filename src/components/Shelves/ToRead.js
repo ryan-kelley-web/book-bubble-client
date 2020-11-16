@@ -7,7 +7,7 @@ const ToRead = (props) => {
     const [books, setBooks] = useState([]);
 
     const fetchBooks = () => {
-        fetch('http://localhost:5000/book/to-read', { //do we need to include any kind of :id like in the endpoint or maybe req.user.id?
+        fetch('http://localhost:5000/book/to-read', { 
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',
@@ -62,4 +62,4 @@ const ToRead = (props) => {
   );
 };
 
-export default Read
+export default ToRead

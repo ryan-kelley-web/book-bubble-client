@@ -5,15 +5,21 @@ const BookCreate = (props) => {
     const [author, setAuthor] = useState('');
     const [title, setTitle] = useState('');
     const [genre, setGenre] = useState('');
-    const [numOfPages, setNumOfPages] = useState(0);
-    const [rating, setRating] = useState(0);
+    // set default state to null????
+    const [numOfPages, setNumOfPages] = useState();
+    // rating may need to be changed to a string prop in book model
+    const [rating, setRating] = useState();
+    const [yearPublished, setYearPublished] = useState();
+    const [description, setDescription] = useState('');
+    const [readStatus, setReadStatus] = useState('');
+
 
     const handleSubmit = e => {
         e.preventDefault();
         const url = 'http://localhost:3001/book/create';
         const headers = {
             method: 'POST',
-            body: JSON.stringify({author: author, title: title, genre: genre, numOfPages: numOfPages, rating: rating}),
+            body: JSON.stringify({author: author, title: title, genre: genre, total_pages: numOfPages, rating: rating, description: description, year_published: yearPublished, read_status: readStatus}),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': props.token
@@ -26,8 +32,11 @@ const BookCreate = (props) => {
                 setAuthor('');
                 setTitle('');
                 setGenre('');
-                setNumOfPages(0);
-                setRating(0);
+                setNumOfPages();
+                setRating();
+                setDescription('');
+                setReadStatus('');
+                setYearPublished();
                 props.getBooks();
             })
             .catch(err => console.log('Error', err));

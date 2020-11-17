@@ -7,13 +7,16 @@ const BookEdit = (props) => {
     const [editGenre, setEditGenre] = useState(props.bookToUpdate.genre);
     const [editNumOfPages, setEditNumOfPages] = useState(props.bookToUpdate.numOfPages);
     const [editRating, setEditRating] = useState(props.bookToUpdate.rating);
+    const [editYearPublished, setEditYearPublished] = useState();
+    const [editDescription, setEditDescription] = useState('');
+    const [editReadStatus, setEditReadStatus] = useState('');
 
     const handleSubmit = (e, book) => {
         e.preventDefault();
         const url = `http://localhost/book/${props.bookToUpdate.id}`;
         const headers = {
             method: 'PUT', 
-            body: JSON.stringify({author: editAuthor, title: editTitle, genre: editGenre, numOfPages: editNumOfPages, rating: editRating}),
+            body: JSON.stringify({author: editAuthor, title: editTitle, genre: editGenre, total_pages: editNumOfPages, rating: editRating, year_published: editYearPublished, description: editDescription, read_status: editReadStatus}),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': props.token
@@ -49,15 +52,38 @@ const BookEdit = (props) => {
                     </Input>
                 </FormGroup>
                 <FormGroup>
-                    <Label htmlFor='numOfPages'>Edit Number Of Pages:</Label>
+                    <Label htmlFor='numOfPages'>Edit Total Number Of Pages:</Label>
                     <Input name='numOfPages' value={editNumOfPages} onChange={e => setEditNumOfPages(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
+                    <Label htmlFor='yearPublished'>Edit Year Published:</Label>
+                    <Input name='yearPublished' value={editYearPublished} onChange={e => setEditYearPublished(e.target.value)} />
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor='description'>Edit Book Description:</Label>
+                    <Input name='description' value={editDescription} onChange={e => setEditDescription(e.target.value)} />
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor='readStatus'>Book Status:</Label>
+                    <Input type='select' name='readStatus' value={editReadStatus} onChange={e => setEditReadStatus(e.target.value)}>
+                        <option value='Read'>Already Read</option>
+                        <option value='Reading'>Currently Reading</option>
+                        <option value='To Read'>Wanting To Read</option>
+                    </Input>
+                </FormGroup>
+                <FormGroup>
                     <Label htmlFor='rating'>Edit Rating:</Label>
-                    <Input name='rating' value={editRating} onChange={e => setEditRating(e.target.value)} />
+                    <Input type='select' name='rating' value={editRating} onChange={e => setEditRating(e.target.value)}>
+                        <option value='0'>0</option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                        <option value='4'>4</option>
+                        <option value='5'>5</option>
+                    </Input>
                 </FormGroup>
                 <Button type='submit'>Update Book</Button>
-            </Form>
+                </Form>
             </ModalBody>
         </Modal>
     );

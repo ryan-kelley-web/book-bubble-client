@@ -9,6 +9,7 @@ import Auth from './components/auth/Auth';
 import Read from './components/Shelves/Read';
 import Reading from './components/Shelves/Reading';
 import ToRead from './components/Shelves/ToRead';
+import BubbleBar from './components/Navbar/BubbleBar';
 
 
 function App() {
@@ -32,17 +33,18 @@ function App() {
     setSessionToken('');
   }
 
-  //adding func to take user to Home once signed/logged in with a token
-  function protectedViews() {
-    return (sessionToken === localStorage.getItem('token') ? <Home token={sessionToken} /> : <Auth updateToken={updateToken} />)
-  }
+  // //adding func to take user to Home once signed/logged in with a token
+  // function protectedViews() {
+  //   return (sessionToken === localStorage.getItem('token') ? <Home token={sessionToken} /> : <Auth updateToken={updateToken} />)
+  // }
 
   //LC added this --- we need to pass the token to all the components here, so list your components just like Read, Reading, ToRead!
+  //RK added Home to protectedViews()
   const protectedViews = () => {
     return(sessionToken === localStorage.getItem('token') 
     ?<div> 
       <Read token={sessionToken}/>
-
+      <Home token={sessionToken}/>
     </div>
     : <Auth updateToken={updateToken}/>
     )
@@ -53,10 +55,10 @@ function App() {
 
     
       <div>
-        <h1>You are now viewing App.js</h1>
+        ***App***
         {/* <Auth updateToken={updateToken} /> */}
         {protectedViews()}
-        {/* {navbar goes here clickLogout={clearToken}/>} */}
+        {<BubbleBar clickLogout={clearToken}/>}
       </div>
  
   );

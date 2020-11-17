@@ -53,8 +53,24 @@ const BookCreate = (props) => {
                     </Input>
                 </FormGroup>
                 <FormGroup>
-                    <Label htmlFor='numOfPages'>Number Of Pages:</Label>
+                    <Label htmlFor='numOfPages'>Total Number Of Pages:</Label>
                     <Input name='numOfPages' value={numOfPages} onChange={e => setNumOfPages(e.target.value)} />
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor='yearPublished'>Year Published:</Label>
+                    <Input name='yearPublished' value={yearPublished} onChange={e => setYearPublished(e.target.value)} />
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor='description'>Book Description:</Label>
+                    <Input name='description' value={description} onChange={e => setDescription(e.target.value)} />
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor='readStatus'>Book Status:</Label>
+                    <Input type='select' name='readStatus' value={readStatus} onChange={e => setReadStatus(e.target.value)}>
+                        <option value='Read'>Already Read</option>
+                        <option value='Reading'>Currently Reading</option>
+                        <option value='To Read'>Wanting To Read</option>
+                    </Input>
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor='rating'>Rating:</Label>
@@ -67,3 +83,16 @@ const BookCreate = (props) => {
 };
 
 export default BookCreate;
+
+/*
+
+        author: req.body.author,
+        title: req.body.title,
+        genre: req.body.genre,
+        total_pages: req.body.total_pages,
+        rating: req.body.rating,
+        description: req.body.description,
+        year_published: req.body.year_published,
+        read_status: req.body.read_status,
+
+*/

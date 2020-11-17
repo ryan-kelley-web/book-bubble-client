@@ -3,6 +3,21 @@ import {Button, Form, FormGroup, Label, Container, Row, Col} from 'reactstrap';
 
 const BookInfo = (props) => {
 
+    const deleteBook = (book) => {
+        const url = `http://localhost:5000/book/${book.id}`;
+        const options = {
+            method: 'DELETE', 
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': props.token
+            })
+        };
+
+        fetch(url, options)
+            .then(() => props.getBooks())
+            .catch(err => console.log('Book Info Fetch Error:', err));
+    };
+
     return(
         <Container>
             <Form>
@@ -38,8 +53,8 @@ const BookInfo = (props) => {
                     <Label htmlFor='rating'>Rating:</Label>
                     <Label name='rating'>{props.book.rating}</Label>
                 </FormGroup>
-                <Button>Edit Book</Button>
-                <Button>Delete Book</Button>
+                <Button color='warning'>Edit Book</Button>
+                <Button color='danger' onClick={() => deleteBook(props.book)}>Delete Book</Button>
             </Form>
         </Container>
     );

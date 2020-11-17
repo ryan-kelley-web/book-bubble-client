@@ -74,7 +74,14 @@ const BookCreate = (props) => {
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor='rating'>Rating:</Label>
-                    <Input name='rating' value={rating} onChange={e => setRating(e.target.value)} />
+                    <Input type='select' name='rating' value={rating} onChange={e => setRating(e.target.value)}>
+                        <option value='0'>0</option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                        <option value='4'>4</option>
+                        <option value='5'>5</option>
+                    </Input>
                 </FormGroup>
                 <Button type='submit'>Add Book</Button>
             </Form>

@@ -46,7 +46,8 @@ function App() {
   //LC added this --- we need to pass the token to all the components here, so list your components just like Read, Reading, ToRead!
   //RK added Home to protectedViews()
   const protectedViews = () => {
-<<<<<<< HEAD
+
+
     return(sessionToken === localStorage.getItem('token') 
     ?<div> 
       {/* <Read token={sessionToken}/> */}
@@ -54,7 +55,7 @@ function App() {
     </div>
     : <Auth updateToken={updateToken}/>
     )
-=======
+
     return(sessionToken === localStorage.getItem('token') ? <Home token={sessionToken} /> : <Auth updateToken={updateToken} />)
     // ?<div> 
     //   {/* <Read token={sessionToken}/> */}
@@ -62,8 +63,11 @@ function App() {
     // {/* </div> */}
     // : <Auth updateToken={updateToken}/>
     // )
->>>>>>> 5494dbc0b49558cf5315a77ba9d3cd12d1c3c5fe
+
   }
+
+}
+
 
   //LC addded the line running protectedViews also
   return (
@@ -95,6 +99,6 @@ function App() {
       </div>
  
   );
-}
+
 
 export default App;

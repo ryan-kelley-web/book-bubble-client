@@ -8,7 +8,7 @@ const BookCreate = (props) => {
     // set default state to null????
     const [numOfPages, setNumOfPages] = useState(0);
     // rating may need to be changed to a string prop in book model
-    const [rating, setRating] = useState();
+    const [rating, setRating] = useState('');
     const [yearPublished, setYearPublished] = useState(0);
     const [description, setDescription] = useState('');
     const [readStatus, setReadStatus] = useState('');
@@ -28,15 +28,16 @@ const BookCreate = (props) => {
 
         fetch(url, headers)
             .then(res => res.json())
-            .then(() => {
+            .then(json => {
+                console.log(json);
                 setAuthor('');
                 setTitle('');
                 setGenre('');
-                setNumOfPages();
-                setRating();
+                setNumOfPages(0);
+                setRating('');
                 setDescription('');
                 setReadStatus('');
-                setYearPublished();
+                setYearPublished(0);
                 // props.getBooks();
             })
             .catch(err => console.log('Error', err));
@@ -47,17 +48,22 @@ const BookCreate = (props) => {
             <h3>Create A Book</h3>
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
-                    <Label htmlFor='author'>Author:</Label>
+                    <Label htmlFor='author'>*Author:</Label>
                     <Input name='author' value={author} onChange={e => setAuthor(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
-                    <Label htmlFor='title'>Title:</Label>
+                    <Label htmlFor='title'>*Title:</Label>
                     <Input name='title' value={title} onChange={e => setTitle(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor='genre'>Genre:</Label>
                     <Input type='select' name='genre' value={genre} onChange={e => setGenre(e.target.value)}>
+                        <option value={null}></option>
                         <option value='Fantasy'>Fantasy</option>
+                        <option value='Mystery'>Mystery</option>
+                        <option value='Romance'>Romance</option>
+                        <option value='Sci-Fi'>Science Fiction</option>
+                        <option value='Self-Help'>Self-Help</option>
                         <option value='Non-Fiction'>Non-Fiction</option>
                     </Input>
                 </FormGroup>
@@ -74,16 +80,18 @@ const BookCreate = (props) => {
                     <Input name='description' value={description} onChange={e => setDescription(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
-                    <Label htmlFor='readStatus'>Book Status:</Label>
+                    <Label htmlFor='readStatus'>*Book Status:</Label>
                     <Input type='select' name='readStatus' value={readStatus} onChange={e => setReadStatus(e.target.value)}>
-                        <option value='Read'>Already Read</option>
-                        <option value='Reading'>Currently Reading</option>
-                        <option value='To Read'>Wanting To Read</option>
+                        <option value={null}></option>
+                        <option value='eead'>Already Read</option>
+                        <option value='reading'>Currently Reading</option>
+                        <option value='to-read'>Wanting To Read</option>
                     </Input>
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor='rating'>Rating:</Label>
                     <Input type='select' name='rating' value={rating} onChange={e => setRating(e.target.value)}>
+                        <option value={null}></option>
                         <option value='0'>0</option>
                         <option value='1'>1</option>
                         <option value='2'>2</option>

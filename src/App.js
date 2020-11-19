@@ -75,7 +75,7 @@ function App() {
         ***App***
         {/* <Auth updateToken={updateToken} /> */}
         {protectedViews()}
-        {console.log('App Session Token:', sessionToken)}
+        {/* {console.log('App Session Token:', sessionToken)} */}
      
       </div>
  

@@ -31,7 +31,9 @@ function App() {
   const clearToken = () => {
     localStorage.clear();
     setSessionToken('');
+    console.log('token cleared');
   }
+
 
   // //adding func to take user to Home once signed/logged in with a token
   // function protectedViews() {
@@ -43,7 +45,7 @@ function App() {
   const protectedViews = () => {
     return(sessionToken === localStorage.getItem('token') 
     ?<div> 
-      <Read token={sessionToken}/>
+      {/* <Read token={sessionToken}/> */}
       <Home token={sessionToken}/>
     </div>
     : <Auth updateToken={updateToken}/>

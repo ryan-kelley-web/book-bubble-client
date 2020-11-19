@@ -3,11 +3,12 @@ import { Nav, NavItem, NavLink } from 'reactstrap';
 
 export default function BubbleBar(props) {
 
-const [isOpen, setIsOpen] = useState(false);
-const selectLinks = () => {
-    let newIsOpen = !isOpen; 
-    setIsOpen(newIsOpen);
-}
+//     const [isOpen, setIsOpen] = useState(false);
+//     const selectLinks = () => {
+//     let newIsOpen = !isOpen; 
+//     setIsOpen(newIsOpen);
+// }
+
 
     return (
         <div>
@@ -26,10 +27,11 @@ const selectLinks = () => {
                 <NavItem>
                     <NavLink disabled href="#">To Read</NavLink>
                 </NavItem>
-                <h3>Helpful Tips</h3>
-                <NavItem>
-                    <NavLink disabled href="#">Reading Dojo</NavLink>
-                </NavItem>
+                {/* <h3>Helpful Tips</h3> */}
+                <br/>
+                
+                    <button onClick={props.clickLogout}>Log Out</button>
+                
             </Nav>
         </div>
     )

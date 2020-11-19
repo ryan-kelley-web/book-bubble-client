@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Nav, NavItem, NavLink } from "reactstrap";
 import { Link } from "react-router-dom";
-import BookCreate from '../Books/BookCreate';
 
 export default function BubbleBar(props) {
-  const [isOpen, setIsOpen] = useState(false);
-  const selectLinks = () => {
-    let newIsOpen = !isOpen;
-    setIsOpen(newIsOpen);
-  };
+  // const [isOpen, setIsOpen] = useState(false);
+  // const selectLinks = () => {
+  //   let newIsOpen = !isOpen;
+  //   setIsOpen(newIsOpen);
+  // };
 
   return (
       <div>
@@ -27,12 +26,8 @@ export default function BubbleBar(props) {
           <NavItem>
             <Link to='/book/to-read'>To Read</Link>
           </NavItem>
-          <h3>Helpful Tips</h3>
-          <NavItem>
-            <NavLink disabled href="#">
-              Reading Dojo
-            </NavLink>
-          </NavItem>
+            <br />
+            <button onClick={props.clickLogout()}>Log Out</button>
         </Nav>
       </div>
   );

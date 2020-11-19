@@ -10,6 +10,9 @@ import Read from './components/Shelves/Read';
 import Reading from './components/Shelves/Reading';
 import ToRead from './components/Shelves/ToRead';
 import BubbleBar from './components/Navbar/BubbleBar';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import BookCreate from './components/Books/BookCreate';
+
 
 
 function App() {
@@ -57,8 +60,27 @@ function App() {
       <div>
         ***App***
         {/* <Auth updateToken={updateToken} /> */}
-        {protectedViews()}
-        {<BubbleBar clickLogout={clearToken}/>}
+        {/* {protectedViews()} */}
+        <Router>
+          <BubbleBar clickLogout={clearToken}/>
+          {/* <Link to='/book/create'>Add Book</Link> */}
+          
+          
+          <Switch>
+            <Route path='/book/create'>
+                <BookCreate />
+            </Route>
+            <Route path='/book/read'>
+              <Read />
+            </Route>
+            <Route path='/book/reading'>
+              <Reading />
+            </Route>
+            <Route path='/book/to-read'>
+              <ToRead />
+            </Route>
+        </Switch>
+        </Router>
       </div>
  
   );

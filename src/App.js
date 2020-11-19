@@ -12,6 +12,8 @@ import ToRead from './components/Shelves/ToRead';
 import BubbleBar from './components/Navbar/BubbleBar';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import BookCreate from './components/Books/BookCreate';
+import BookEdit from './components/Books/BookEdit';
+import BookInfo from './components/Books/BookInfo';
 
 
 
@@ -75,7 +77,7 @@ function App() {
         ***App***
         {/* <Auth updateToken={updateToken} /> */}
         {protectedViews()}
-        {console.log('App Session Token:', sessionToken)}
+        {/* {console.log('App Session Token:', sessionToken)} */}
      
       </div>
  

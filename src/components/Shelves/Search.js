@@ -1,32 +1,26 @@
 import React, {useState, useEffect} from 'react';
 import {Table, Button} from 'reactstrap'; //figure out how to do this with material UI
-//import BookEdit from '../Books/BookEdit'; //will need to match the component we "link to" with the button
-import BookInfo from '../Books/BookInfo';
+import BookEdit from '../Books/BookEdit'; //will need to match the component we "link to" with the button
 
-
-const Read = (props) => { 
+const Search = (props) => { 
 
     const [books, setBooks] = useState([]);
+    const [query, setQuery] = useState('');
 
     const fetchBooks = () => {
-        fetch('http://localhost:5000/book/read', { 
+        fetch(`http://localhost:5000/book/search/${query}`, { 
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',
                 'Authorization': props.token
-            })
-        }) 
-        //.then(res => console.log(res))
+            }),
+        })
         .then( (res) => res.json())
         .then((bookData)=> {
             setBooks(bookData)
             console.log(bookData);
         })
     };
-
-    useEffect(()=> {
-        fetchBooks(); 
-    }, [])
 
     const bookMapper = () => {
         return books.map((book, index) => { 
@@ -36,7 +30,7 @@ const Read = (props) => {
                     <td>{book.author}</td>
                     <td>{book.year_published}</td>
                     <td>
-                        <Button color="info" onClick={()=> {return(BookInfo)}}>See More</Button> 
+                        <Button color="info" onClick={()=> {return(BookEdit)}}>See More</Button> 
                     </td>
                 </tr>
             )
@@ -46,9 +40,10 @@ const Read = (props) => {
 
  return (
     <>
-      <h3>Books Read</h3>
-      <hr />
-      <Table striped>
+      <h3>BookFinder</h3>
+      { books
+      ? (
+        <Table striped>
         <thead>
           <tr>
             <th>Title</th>
@@ -60,10 +55,17 @@ const Read = (props) => {
           {bookMapper()}
         </tbody>
       </Table>
+      )
+      : (
+        <input
+        name="query"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onSubmit={fetchBooks} 
+        />
+      ) }
     </>
   );
 };
 
-export default Read;
-
-
+export default Search;

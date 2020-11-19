@@ -7,7 +7,7 @@ import Read from '../Shelves/Read';
 import Reading from '../Shelves/Reading';
 import ToRead from '../Shelves/ToRead';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import Search from '../Shelves/Search';
 
 
 export default function Home(props) {
@@ -46,13 +46,16 @@ export default function Home(props) {
                         <BookCreate token={props.token} />
                     </Route>
                     <Route path='/book/read'>
-                        <Read />
+                        <Read token={props.token} />
                     </Route>
                     <Route path='/book/reading'>
-                        <Reading />
+                        <Reading token={props.token} />
                     </Route>
                     <Route path='/book/to-read'>
-                        <ToRead />
+                        <ToRead token={props.token} />
+                    </Route>
+                    <Route path='/book/search'>
+                        <Search token={props.token} />
                     </Route>
                 </Switch>
             </Router>

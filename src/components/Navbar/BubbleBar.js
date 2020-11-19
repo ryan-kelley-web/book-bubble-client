@@ -28,6 +28,9 @@ export default function BubbleBar(props) {
           <NavItem>
             <Link to='/book/to-read'>To Read</Link>
           </NavItem>
+          <NavItem>
+            <Link to='/book/search'>Search</Link>
+          </NavItem>
             <br />
             <button onClick={props.clickLogout}>Log Out</button>
         </Nav>

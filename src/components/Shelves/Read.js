@@ -16,8 +16,8 @@ const Read = (props) => {
                 'Authorization': props.token
             })
         }) 
-        //.then(res => console.log(res))
-        .then( (res) => res.json())
+        //.then((res) => console.log(res.json()))
+        .then((res) => res.json())
         .then((bookData)=> {
             setBooks(bookData)
             console.log(bookData);

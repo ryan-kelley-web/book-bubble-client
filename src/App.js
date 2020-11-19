@@ -54,6 +54,7 @@ function App() {
     </div>
     : <Auth updateToken={updateToken}/>
     )
+}
 
   //LC addded the line running protectedViews also
   return (

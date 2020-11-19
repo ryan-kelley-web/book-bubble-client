@@ -36,14 +36,13 @@ const Read = (props) => {
                     <td>{book.author}</td>
                     <td>{book.year_published}</td>
                     <td>
-                        <Button color="info" onClick={()=> {return(BookInfo)}}>See More</Button> 
+                        <Button color="info" onClick={()=> {return(BookEdit)}}>See More</Button> 
                     </td>
                 </tr>
             )
         })
     }
-    //does the button go to BookEdit? Do we still have a Book or BookDisplay component to display the details of each book?
-
+    //does the button go to BookEdit? 
  return (
     <>
       <h3>Books Read</h3>

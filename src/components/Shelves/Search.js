@@ -37,12 +37,18 @@ const Search = (props) => {
         })
     }
     //does the button go to BookEdit? Do we still have a Book or BookDisplay component to display the details of each book?
+    
+    const clearResults = () => {
+      setBooks([]);
+      setQuery('');
+  }
 
  return (
     <>
       <h3>BookFinder</h3>
-      { books
+      { books.length > 0
       ? (
+        <div>
         <Table striped>
         <thead>
           <tr>
@@ -55,16 +61,22 @@ const Search = (props) => {
           {bookMapper()}
         </tbody>
       </Table>
+       <br/><br/>
+       <button onClick={clearResults}>Clear Results</button>
+       </div> 
       )
       : (
-        <input
+       <div>
+       <input
         name="query"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        onSubmit={fetchBooks} 
         />
+        <br/><br/>
+        <button onClick={fetchBooks}>Submit</button>
+        </div> 
       ) }
-    </>
+      </>
   );
 };
 

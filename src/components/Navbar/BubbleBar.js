@@ -3,11 +3,13 @@ import { Nav, NavItem, NavLink } from "reactstrap";
 import { Link } from "react-router-dom";
 
 export default function BubbleBar(props) {
+
   // const [isOpen, setIsOpen] = useState(false);
   // const selectLinks = () => {
   //   let newIsOpen = !isOpen;
   //   setIsOpen(newIsOpen);
   // };
+
 
   return (
       <div>
@@ -31,5 +33,4 @@ export default function BubbleBar(props) {
         </Nav>
       </div>
   );
-
 }

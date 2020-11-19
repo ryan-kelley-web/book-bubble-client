@@ -47,6 +47,7 @@ function App() {
   //RK added Home to protectedViews()
   const protectedViews = () => {
 
+
     return(sessionToken === localStorage.getItem('token') 
     ?<div> 
       {/* <Read token={sessionToken}/> */}
@@ -54,7 +55,19 @@ function App() {
     </div>
     : <Auth updateToken={updateToken}/>
     )
+
+    return(sessionToken === localStorage.getItem('token') ? <Home token={sessionToken} /> : <Auth updateToken={updateToken} />)
+    // ?<div> 
+    //   {/* <Read token={sessionToken}/> */}
+    //   <Home token={sessionToken}/>
+    // {/* </div> */}
+    // : <Auth updateToken={updateToken}/>
+    // )
+
+  }
+
 }
+
 
   //LC addded the line running protectedViews also
   return (
@@ -86,6 +99,6 @@ function App() {
       </div>
  
   );
-}
+
 
 export default App;

@@ -48,15 +48,15 @@ function App() {
   const protectedViews = () => {
 
 
-    return(sessionToken === localStorage.getItem('token') 
-    ?<div> 
-      {/* <Read token={sessionToken}/> */}
-      <Home token={sessionToken}/>
-    </div>
-    : <Auth updateToken={updateToken}/>
-    )
+    // return(sessionToken === localStorage.getItem('token') 
+    // ?<div> 
+    //   <Read token={sessionToken}/>
+    //   <Home token={sessionToken}/>
+    // </div>
+    // : <Auth updateToken={updateToken}/>
+    // )
 
-    return(sessionToken === localStorage.getItem('token') ? <Home token={sessionToken} /> : <Auth updateToken={updateToken} />)
+    return(sessionToken === localStorage.getItem('token') ? <Home token={sessionToken} clickLogout={clearToken} /> : <Auth updateToken={updateToken} />)
     // ?<div> 
     //   {/* <Read token={sessionToken}/> */}
     //   <Home token={sessionToken}/>
@@ -65,8 +65,6 @@ function App() {
     // )
 
   }
-
-}
 
 
   //LC addded the line running protectedViews also
@@ -78,27 +76,10 @@ function App() {
         {/* <Auth updateToken={updateToken} /> */}
         {protectedViews()}
         {console.log('App Session Token:', sessionToken)}
-        <Router>
-          <BubbleBar clickLogout={clearToken}/>
-          
-          <Switch>
-            <Route path='/book/create'>
-                <BookCreate token={sessionToken} />
-            </Route>
-            <Route path='/book/read'>
-              <Read />
-            </Route>
-            <Route path='/book/reading'>
-              <Reading />
-            </Route>
-            <Route path='/book/to-read'>
-              <ToRead />
-            </Route>
-        </Switch>
-        </Router>
+     
       </div>
  
   );
-
+  }
 
 export default App;

@@ -29,7 +29,7 @@ export default function BubbleBar(props) {
             <Link to='/book/to-read'>To Read</Link>
           </NavItem>
             <br />
-            <button onClick={props.clickLogout()}>Log Out</button>
+            <button onClick={props.clickLogout}>Log Out</button>
         </Nav>
       </div>
   );

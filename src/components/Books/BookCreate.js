@@ -8,7 +8,7 @@ const BookCreate = (props) => {
     // set default state to null????
     const [numOfPages, setNumOfPages] = useState(0);
     // rating may need to be changed to a string prop in book model
-    const [rating, setRating] = useState(null);
+    const [rating, setRating] = useState();
     const [yearPublished, setYearPublished] = useState(0);
     const [description, setDescription] = useState('');
     const [readStatus, setReadStatus] = useState('');

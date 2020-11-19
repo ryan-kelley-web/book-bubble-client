@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-import { Alert } from 'reactstrap'; import { Badge } from 'reactstrap';
+import { Alert } from 'reactstrap'; 
 import LeftArrow from './home-assets/left_arrow.png';
 import BubbleBar from '../Navbar/BubbleBar';
+import BookCreate from '../Books/BookCreate';
+import Read from '../Shelves/Read';
+import Reading from '../Shelves/Reading';
+import ToRead from '../Shelves/ToRead';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 
 
@@ -33,6 +38,24 @@ export default function Home(props) {
         </p>
             </Alert>
 
+            <Router>
+                <BubbleBar clickLogout={props.clickLogout} />
+
+                <Switch>
+                    <Route path='/book/create'>
+                        <BookCreate token={props.token} />
+                    </Route>
+                    <Route path='/book/read'>
+                        <Read />
+                    </Route>
+                    <Route path='/book/reading'>
+                        <Reading />
+                    </Route>
+                    <Route path='/book/to-read'>
+                        <ToRead />
+                    </Route>
+                </Switch>
+            </Router>
         </div>
 
 

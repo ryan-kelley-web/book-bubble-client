@@ -2,29 +2,25 @@ import React, {useState, useEffect} from 'react';
 import {Table, Button} from 'reactstrap'; //figure out how to do this with material UI
 import BookEdit from '../Books/BookEdit'; //will need to match the component we "link to" with the button
 
-const Reading = (props) => { 
+const Search = (props) => { 
 
     const [books, setBooks] = useState([]);
+    const [query, setQuery] = useState('');
 
     const fetchBooks = () => {
-        fetch('http://localhost:5000/book/reading', { 
+        fetch(`http://localhost:5000/book/search/${query}`, { 
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',
                 'Authorization': props.token
-            })
-        }) 
-        //.then(res => console.log(res))
+            }),
+        })
         .then( (res) => res.json())
         .then((bookData)=> {
             setBooks(bookData)
             console.log(bookData);
         })
     };
-
-    useEffect(()=> {
-        fetchBooks(); 
-    }, [])
 
     const bookMapper = () => {
         return books.map((book, index) => { 
@@ -44,9 +40,10 @@ const Reading = (props) => {
 
  return (
     <>
-      <h3>Books Reading</h3>
-      <hr />
-      <Table striped>
+      <h3>BookFinder</h3>
+      { books
+      ? (
+        <Table striped>
         <thead>
           <tr>
             <th>Title</th>
@@ -58,8 +55,17 @@ const Reading = (props) => {
           {bookMapper()}
         </tbody>
       </Table>
+      )
+      : (
+        <input
+        name="query"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onSubmit={fetchBooks} 
+        />
+      ) }
     </>
   );
 };
 
-export default Reading
+export default Search;

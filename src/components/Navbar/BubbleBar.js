@@ -33,9 +33,9 @@ export default function BubbleBar(props) {
                 </NavItem>
                 {/* <h3>Helpful Tips</h3> */}
                 <br/>
-                
+
                     <button onClick={props.clickLogout}>Log Out</button>
-                
+
             </Nav>
         </div>
     )

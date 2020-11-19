@@ -10,6 +10,9 @@ import Read from './components/Shelves/Read';
 import Reading from './components/Shelves/Reading';
 import ToRead from './components/Shelves/ToRead';
 import BubbleBar from './components/Navbar/BubbleBar';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import BookCreate from './components/Books/BookCreate';
+
 
 
 function App() {
@@ -43,6 +46,7 @@ function App() {
   //LC added this --- we need to pass the token to all the components here, so list your components just like Read, Reading, ToRead!
   //RK added Home to protectedViews()
   const protectedViews = () => {
+<<<<<<< HEAD
     return(sessionToken === localStorage.getItem('token') 
     ?<div> 
       {/* <Read token={sessionToken}/> */}
@@ -50,6 +54,15 @@ function App() {
     </div>
     : <Auth updateToken={updateToken}/>
     )
+=======
+    return(sessionToken === localStorage.getItem('token') ? <Home token={sessionToken} /> : <Auth updateToken={updateToken} />)
+    // ?<div> 
+    //   {/* <Read token={sessionToken}/> */}
+    //   <Home token={sessionToken}/>
+    // {/* </div> */}
+    // : <Auth updateToken={updateToken}/>
+    // )
+>>>>>>> 5494dbc0b49558cf5315a77ba9d3cd12d1c3c5fe
   }
 
   //LC addded the line running protectedViews also
@@ -60,7 +73,25 @@ function App() {
         ***App***
         {/* <Auth updateToken={updateToken} /> */}
         {protectedViews()}
-        {<BubbleBar clickLogout={clearToken}/>}
+        {console.log('App Session Token:', sessionToken)}
+        <Router>
+          <BubbleBar clickLogout={clearToken}/>
+          
+          <Switch>
+            <Route path='/book/create'>
+                <BookCreate token={sessionToken} />
+            </Route>
+            <Route path='/book/read'>
+              <Read />
+            </Route>
+            <Route path='/book/reading'>
+              <Reading />
+            </Route>
+            <Route path='/book/to-read'>
+              <ToRead />
+            </Route>
+        </Switch>
+        </Router>
       </div>
  
   );

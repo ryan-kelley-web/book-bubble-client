@@ -44,13 +44,13 @@ function App() {
   //LC added this --- we need to pass the token to all the components here, so list your components just like Read, Reading, ToRead!
   //RK added Home to protectedViews()
   const protectedViews = () => {
-    return(sessionToken === localStorage.getItem('token') 
-    ?<div> 
-      <Read token={sessionToken}/>
-      <Home token={sessionToken}/>
-    </div>
-    : <Auth updateToken={updateToken}/>
-    )
+    return(sessionToken === localStorage.getItem('token') ? <Home token={sessionToken} /> : <Auth updateToken={updateToken} />)
+    // ?<div> 
+    //   {/* <Read token={sessionToken}/> */}
+    //   <Home token={sessionToken}/>
+    // {/* </div> */}
+    // : <Auth updateToken={updateToken}/>
+    // )
   }
 
   //LC addded the line running protectedViews also
@@ -60,15 +60,14 @@ function App() {
       <div>
         ***App***
         {/* <Auth updateToken={updateToken} /> */}
-        {/* {protectedViews()} */}
+        {protectedViews()}
+        {console.log('App Session Token:', sessionToken)}
         <Router>
           <BubbleBar clickLogout={clearToken}/>
-          {/* <Link to='/book/create'>Add Book</Link> */}
-          
           
           <Switch>
             <Route path='/book/create'>
-                <BookCreate />
+                <BookCreate token={sessionToken} />
             </Route>
             <Route path='/book/read'>
               <Read />

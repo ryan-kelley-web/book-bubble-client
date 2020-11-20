@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Table, Button} from 'reactstrap'; 
-//import BookEdit from '../Books/BookEdit'; 
 import BookEdit from '../Books/BookEdit';
-
 
 const Read = (props) => { 
 

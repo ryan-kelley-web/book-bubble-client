@@ -5,7 +5,6 @@ const BookCreate = (props) => {
   const [author, setAuthor] = useState("");
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("");
-  // set default state to null????
   const [numOfPages, setNumOfPages] = useState(0);
   // rating may need to be changed to a string prop in book model
   const [rating, setRating] = useState("");
@@ -16,40 +15,45 @@ const BookCreate = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const url = "http://localhost:5000/book/create";
-    let book = { author: author, title: title, read_status: readStatus };
-    if (genre) {
-      book.genre = genre;
-    }
-    if (numOfPages) {
-      book.total_pages = numOfPages;
-    }
-    if (rating) {
-      book.rating = rating;
-    }
-    if (description) {
-      book.description = description;
-    }
-    if (yearPublished) {
-      book.yearPublished = yearPublished;
-    }
-    const headers = {
+    // let book = { author: author, title: title, read_status: readStatus }; 
+    // if (genre) {
+    //   book.genre = genre;
+    // }
+    // if (numOfPages) {
+    //   book.total_pages = numOfPages;
+    // }
+    // if (rating) {
+    //   book.rating = rating;
+    // }
+    // if (description) {
+    //   book.description = description;
+    // }
+    // if (yearPublished) {
+    //   book.yearPublished = yearPublished;
+    // }
+    const options = {
       method: "POST",
-      body: JSON.stringify(book),
+      body: JSON.stringify({author: author, title: title, genre: genre, total_pages: numOfPages, rating: rating, description: description, year_published: yearPublished, read_status: readStatus}),
       headers: new Headers({
         "Content-Type": "application/json",
-        Authorization: props.token,
+        'Authorization': props.token,
       }),
     };
-    console.log(headers.body);
+    // console.log(headers.body);
 
-    fetch(url, headers)
-      //.then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-      })
+    fetch(url, options)
+      // .then((res) => res.json())
+      // .then(res => res.text())
+      // .then(text => console.log(text))
+      .then(res => res.json())
+      .then(json => console.log(json))
+      .then(() => clearForm())
+      // .then((res) => {
+      //   console.log(res);
+      // })
       .catch((err) => console.log(err));
 
-    clearForm();
+    // clearForm();
   };
 
   const clearForm = () => {

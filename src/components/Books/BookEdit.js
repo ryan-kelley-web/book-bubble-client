@@ -19,7 +19,8 @@ const BookEdit = (props) => {
             body: JSON.stringify(
         {book : {
                 author: editAuthor,
-                title: editTitle, genre: editGenre,
+                title: editTitle, 
+                genre: editGenre,
                 total_pages: editNumOfPages,
                 rating: editRating,
                 year_published: editYearPublished,
@@ -32,11 +33,10 @@ const BookEdit = (props) => {
                 'Authorization': props.token
             })
         };
-
         fetch(url, headers)
             .then(res => {
-                props.getBooks();
-                props.updateOff();
+                props.fetchBooks();
+             // props.updateOff(); --- put this as an on submit below
             })
             .catch(err => console.log('Book Edit Fetch Error:', err));
     }
@@ -92,7 +92,7 @@ const BookEdit = (props) => {
                             <option value='5'>5</option>
                         </Input>
                     </FormGroup>
-                    <Button type='submit'>Update Book</Button>
+                    <Button type='submit' onClick={()=> {props.updateOff()}}>Update Book</Button>
                 </Form>
             </ModalBody>
         </Modal>

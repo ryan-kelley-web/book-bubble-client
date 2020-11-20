@@ -17,7 +17,6 @@ export default function Home(props) {
 
 
         <div>
-            ***Home***
             <h1>BookBubble</h1>
             <Alert color="dark" isOpen={visible} toggle={onDismiss}>
                 <p>Welcome to <em>your Bubble!</em></p>

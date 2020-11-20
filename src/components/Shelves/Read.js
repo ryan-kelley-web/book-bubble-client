@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {Table, Button} from 'reactstrap'; //figure out how to do this with material UI
 //import BookEdit from '../Books/BookEdit'; //will need to match the component we "link to" with the button
-import BookInfo from '../Books/BookInfo';
+import BookEdit from '../Books/BookEdit';
 
 
 const Read = (props) => { 
 
     const [books, setBooks] = useState([]);
+    const [updateActive, setUpdateActive] = useState(false);
+    const [bookToUpdate, setBookToUpdate] = useState({});
 
     const fetchBooks = () => {
         fetch('http://localhost:5000/book/read', { 
@@ -24,6 +26,19 @@ const Read = (props) => {
         })
     };
 
+    const editUpdateBook = (book) =>{
+      setBookToUpdate(book);
+      console.log(book);
+    }
+  
+    const updateOn = () => {
+      setUpdateActive(true);
+    }
+
+    const updateOff = () => {
+      setUpdateActive(false);
+    }
+
     useEffect(()=> {
         fetchBooks(); 
     }, [])
@@ -36,13 +51,13 @@ const Read = (props) => {
                     <td>{book.author}</td>
                     <td>{book.year_published}</td>
                     <td>
-                        <Button color="info" onClick={()=> {return(BookEdit)}}>See More</Button> 
+                    <Button color="warning" onClick={()=> {editUpdateBook(book); updateOn()}}>Edit Book</Button>
                     </td>
                 </tr>
             )
         })
     }
-    //does the button go to BookEdit? 
+
  return (
     <>
       <h3>Books Read</h3>
@@ -59,6 +74,7 @@ const Read = (props) => {
           {bookMapper()}
         </tbody>
       </Table>
+      {updateActive ? <BookEdit bookToUpdate={bookToUpdate} updateOff={updateOff} fetchBooks={fetchBooks} /> : <></>}
     </>
   );
 };

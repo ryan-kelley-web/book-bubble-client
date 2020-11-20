@@ -16,7 +16,7 @@ const BookCreate = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const url = "http://localhost:5000/book/create";
-    let book = { author: author, title: title, read_status: readStatus };
+    let book = { author: author, title: title, read_status: read_status }; //changed readStatus to read_status. RK. 
     if (genre) {
       book.genre = genre;
     }

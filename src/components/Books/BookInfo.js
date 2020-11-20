@@ -1,5 +1,6 @@
-import React from 'react';
-import {Button, Form, FormGroup, Label, Container, Row, Col} from 'reactstrap';
+import React, {useState} from 'react';
+import {Button, Form, FormGroup, Label, Container, Row, Col, Progress} from 'reactstrap';
+
 
 const BookInfo = (props) => {
 
@@ -16,6 +17,9 @@ const BookInfo = (props) => {
             .then(() => props.fetchBooks())
             .catch(err => console.log('Book Info Fetch Error:', err));
     };
+
+    
+
 
     return(
         <Container>
@@ -35,6 +39,8 @@ const BookInfo = (props) => {
                 <FormGroup>
                     <Label htmlFor='numOfPages'>Total Number Of Pages:</Label>
                     <Label name='numOfPages'>{props.book.total_pages}</Label>
+                    {/* //attempting progress bar add */}
+                    <Progress value="25">25%</Progress>
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor='yearPublished'>Year Published:</Label>
@@ -52,7 +58,7 @@ const BookInfo = (props) => {
                     <Label htmlFor='rating'>Rating:</Label>
                     <Label name='rating'>{props.book.rating}</Label>
                 </FormGroup>
-                <Button color='warning'>Edit Book</Button>
+                <Button color='warning' onClick={props.BookEdit}>Edit Book</Button>
                 <Button color='danger' onClick={() => deleteBook(props.book)}>Delete Book</Button>
             </Form>
         </Container>

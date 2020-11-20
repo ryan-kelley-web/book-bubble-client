@@ -5,6 +5,8 @@ import BookEdit from '../Books/BookEdit'; //will need to match the component we 
 const Reading = (props) => { 
 
     const [books, setBooks] = useState([]);
+    const [updateActive, setUpdateActive] = useState(false);
+    const [bookToUpdate, setBookToUpdate] = useState({});
 
     const fetchBooks = () => {
         fetch('http://localhost:5000/book/reading', { 
@@ -22,6 +24,19 @@ const Reading = (props) => {
         })
     };
 
+    const editUpdateBook = (book) =>{
+      setBookToUpdate(book);
+      console.log(book);
+    }
+  
+    const updateOn = () => {
+      setUpdateActive(true);
+    }
+
+    const updateOff = () => {
+      setUpdateActive(false);
+    }
+
     useEffect(()=> {
         fetchBooks(); 
     }, [])
@@ -34,7 +49,7 @@ const Reading = (props) => {
                     <td>{book.author}</td>
                     <td>{book.year_published}</td>
                     <td>
-                        <Button color="info" onClick={()=> {return(BookEdit)}}>See More</Button> 
+                    <Button color="warning" onClick={()=> {editUpdateBook(book); updateOn()}}>See More</Button>
                     </td>
                 </tr>
             )
@@ -58,6 +73,7 @@ const Reading = (props) => {
           {bookMapper()}
         </tbody>
       </Table>
+      {updateActive ? <BookEdit bookToUpdate={bookToUpdate} updateOff={updateOff} fetchBooks={fetchBooks} /> : <></>}
     </>
   );
 };

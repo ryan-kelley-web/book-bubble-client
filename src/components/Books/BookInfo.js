@@ -12,9 +12,8 @@ const BookInfo = (props) => {
                 'Authorization': props.token
             })
         };
-
         fetch(url, options)
-            .then(() => props.getBooks())
+            .then(() => props.fetchBooks())
             .catch(err => console.log('Book Info Fetch Error:', err));
     };
 

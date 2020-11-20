@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Nav, NavItem, NavLink } from "reactstrap";
+import { Nav, NavItem, Button, NavLink } from "reactstrap";
 import { Link } from "react-router-dom";
 
 export default function BubbleBar(props) {
@@ -9,7 +9,6 @@ export default function BubbleBar(props) {
   //   let newIsOpen = !isOpen;
   //   setIsOpen(newIsOpen);
   // };
-
 
   return (
       <div>
@@ -32,8 +31,8 @@ export default function BubbleBar(props) {
             <Link to='/book/search'>Search</Link>
           </NavItem>
             <br />
-            <button onClick={props.clickLogout}>Log Out</button>
         </Nav>
+        <Button color="primary" onClick={props.clickLogout}>Log Out</Button>
       </div>
   );
 }

@@ -49,7 +49,7 @@ const ToRead = (props) => {
                     <td>{book.author}</td>
                     <td>{book.year_published}</td>
                     <td>
-                    <Button color="warning" onClick={()=> {editUpdateBook(book); updateOn()}}>See More</Button>
+                    <Button color="primary" onClick={()=> {editUpdateBook(book); updateOn()}}>Edit Book</Button>
                     </td>
                 </tr>
             )
@@ -61,7 +61,7 @@ const ToRead = (props) => {
     <>
       <h3>Books To Read</h3>
       <hr />
-      <Table striped>
+      <Table striped className="table">
         <thead>
           <tr>
             <th>Title</th>

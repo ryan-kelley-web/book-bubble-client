@@ -6,6 +6,8 @@ const Search = (props) => {
 
     const [books, setBooks] = useState([]);
     const [query, setQuery] = useState('');
+    const [updateActive, setUpdateActive] = useState(false);
+    const [bookToUpdate, setBookToUpdate] = useState({});
 
     const fetchBooks = () => {
         fetch(`http://localhost:5000/book/search/${query}`, { 
@@ -22,6 +24,24 @@ const Search = (props) => {
         })
     };
 
+    const editUpdateBook = (book) =>{
+      setBookToUpdate(book);
+      console.log(book);
+    }
+  
+    const updateOn = () => {
+      setUpdateActive(true);
+    }
+
+    const updateOff = () => {
+      setUpdateActive(false);
+    }
+
+    const clearResults = () => {
+      setBooks([]);
+      setQuery('');
+  }
+
     const bookMapper = () => {
         return books.map((book, index) => { 
             return(
@@ -30,18 +50,12 @@ const Search = (props) => {
                     <td>{book.author}</td>
                     <td>{book.year_published}</td>
                     <td>
-                        <Button color="info" onClick={()=> {return(BookEdit)}}>See More</Button> 
+                    <Button color="primary" onClick={()=> {editUpdateBook(book); updateOn()}}>Edit Book</Button>
                     </td>
                 </tr>
             )
         })
     }
-    //does the button go to BookEdit? Do we still have a Book or BookDisplay component to display the details of each book?
-    
-    const clearResults = () => {
-      setBooks([]);
-      setQuery('');
-  }
 
  return (
     <>
@@ -49,7 +63,7 @@ const Search = (props) => {
       { books.length > 0
       ? (
         <div>
-        <Table striped>
+        <Table striped className="table">
         <thead>
           <tr>
             <th>Title</th>
@@ -62,7 +76,7 @@ const Search = (props) => {
         </tbody>
       </Table>
        <br/><br/>
-       <button onClick={clearResults}>Clear Results</button>
+       <Button color="primary" onClick={clearResults}>Clear Results</Button>
        </div> 
       )
       : (
@@ -73,7 +87,7 @@ const Search = (props) => {
         onChange={(e) => setQuery(e.target.value)}
         />
         <br/><br/>
-        <button onClick={fetchBooks}>Submit</button>
+        <Button color="primary" onClick={fetchBooks}>Submit</Button>
         </div> 
       ) }
       </>

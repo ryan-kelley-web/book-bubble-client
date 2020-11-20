@@ -10,7 +10,7 @@ import Read from './components/Shelves/Read';
 import Reading from './components/Shelves/Reading';
 import ToRead from './components/Shelves/ToRead';
 import BubbleBar from './components/Navbar/BubbleBar';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import BookCreate from './components/Books/BookCreate';
 import BookEdit from './components/Books/BookEdit';
 import BookInfo from './components/Books/BookInfo';
@@ -58,14 +58,14 @@ function App() {
     // : <Auth updateToken={updateToken}/>
     // )
 
-    return(sessionToken === localStorage.getItem('token') ? <Home token={sessionToken} clickLogout={clearToken} /> : <Auth updateToken={updateToken} />)
+    return(sessionToken === localStorage.getItem('token') ? <Home token={sessionToken} clickLogout={clearToken} /> : (<Router><Redirect to='/' /><Auth updateToken={updateToken} /></Router>))
     // ?<div> 
     //   {/* <Read token={sessionToken}/> */}
     //   <Home token={sessionToken}/>
     // {/* </div> */}
     // : <Auth updateToken={updateToken}/>
     // )
-
+//here the Router redirects us to the Auth route instead of Read, etc. paths
   }
 
 
@@ -74,7 +74,6 @@ function App() {
 
     
       <div>
-        ***App***
         {/* <Auth updateToken={updateToken} /> */}
         {protectedViews()}
         {/* {console.log('App Session Token:', sessionToken)} */}

@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
-import { Alert } from 'reactstrap'; 
-import LeftArrow from './home-assets/left_arrow.png';
-import BubbleBar from '../Navbar/BubbleBar';
-import BookCreate from '../Books/BookCreate';
-import Read from '../Shelves/Read';
-import Reading from '../Shelves/Reading';
-import ToRead from '../Shelves/ToRead';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Search from '../Shelves/Search';
-
+import React, { useEffect, useState } from "react";
+import { Alert, Container, Row, Col } from "reactstrap";
+import LeftArrow from "./home-assets/left_arrow.png";
+import BubbleBar from "../Navbar/BubbleBar";
+import BookCreate from "../Books/BookCreate";
+import Read from "../Shelves/Read";
+import Reading from "../Shelves/Reading";
+import ToRead from "../Shelves/ToRead";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect  } from "react-router-dom";
+import Search from "../Shelves/Search";
 
 export default function Home(props) {
-
-    const [visible, setVisible] = useState(true);
-    const onDismiss = () => setVisible(false);
+  const [visible, setVisible] = useState(true);
+  const onDismiss = () => setVisible(false);
     
     return (
 
@@ -38,29 +36,32 @@ export default function Home(props) {
         </p> */}
             </Alert>
 
+      <Container>
+        <Row>
+          <Col md="9">
             <Router>
-                <BubbleBar clickLogout={props.clickLogout} />
-
-                <Switch>
-                    <Route path='/book/create'>
-                        <BookCreate token={props.token} />
-                    </Route>
-                    <Route path='/book/read'>
-                        <Read token={props.token} />
-                    </Route>
-                    <Route path='/book/reading'>
-                        <Reading token={props.token} />
-                    </Route>
-                    <Route path='/book/to-read'>
-                        <ToRead token={props.token} />
-                    </Route>
-                    <Route path='/book/search'>
-                        <Search token={props.token} />
-                    </Route>
-                </Switch>
+              <BubbleBar clickLogout={props.clickLogout} />
+              <Switch>
+                <Route path="/book/create">
+                  <BookCreate token={props.token} />
+                </Route>
+                <Route path="/book/read">
+                  <Read token={props.token} />
+                </Route>
+                <Route path="/book/reading">
+                  <Reading token={props.token} />
+                </Route>
+                <Route path="/book/to-read">
+                  <ToRead token={props.token} />
+                </Route>
+                <Route path="/book/search">
+                  <Search token={props.token} />
+                </Route>
+              </Switch>
             </Router>
-        </div>
-
-
-    )
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
 }

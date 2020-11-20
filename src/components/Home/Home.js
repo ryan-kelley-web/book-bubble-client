@@ -33,9 +33,9 @@ export default function Home(props) {
                     <li>Books you want <b>To Read</b></li><br />
                     <li>Books you’re currently <b>Reading</b></li><br />
                 </ul><br />
-                <p>Also, for features and strategies to help you read faster and remember important discoveries made on your reading adventures, be sure to check out the <b>Reading Dojo</b>.</p> <br />
+                {/* <p>Also, for features and strategies to help you read faster and remember important discoveries made on your reading adventures, be sure to check out the <b>Reading Dojo</b>.</p> <br />
                 <img src={LeftArrow} /><p>You can access all of this using the <b>BubbleBar</b>. Now click 'Add Book' to begin your BookBubble collection!
-        </p>
+        </p> */}
             </Alert>
 
             <Router>

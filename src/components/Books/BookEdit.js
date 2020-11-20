@@ -13,10 +13,11 @@ const BookEdit = (props) => {
 
     const handleSubmit = (e, book) => {
         e.preventDefault();
-        const url = `http://localhost/book/${props.bookToUpdate.id}`;
+        const url = `http://localhost:5000/book/${props.bookToUpdate.id}`;
         const headers = {
             method: 'PUT',
-            body: JSON.stringify({
+            body: JSON.stringify(
+        {book : {
                 author: editAuthor,
                 title: editTitle, genre: editGenre,
                 total_pages: editNumOfPages,
@@ -24,7 +25,8 @@ const BookEdit = (props) => {
                 year_published: editYearPublished,
                 description: editDescription,
                 read_status: editReadStatus
-            }),
+            }}
+            ),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': props.token

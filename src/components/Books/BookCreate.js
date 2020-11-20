@@ -15,7 +15,7 @@ const BookCreate = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const url = "http://localhost:5000/book/create";
-    // let book = { author: author, title: title, read_status: readStatus }; 
+    // let book = { author: author, title: title, read_status: readStatus };
     // if (genre) {
     //   book.genre = genre;
     // }
@@ -33,7 +33,16 @@ const BookCreate = (props) => {
     // }
     const options = {
       method: "POST",
-      body: JSON.stringify({author: author, title: title, genre: genre, total_pages: numOfPages, rating: rating, description: description, year_published: yearPublished, read_status: readStatus}),
+      body: JSON.stringify({
+        author: author,
+        title: title,
+        genre: genre,
+        total_pages: numOfPages,
+        rating: rating,
+        description: description,
+        year_published: yearPublished,
+        read_status: readStatus,
+      }),
       headers: new Headers({
         "Content-Type": "application/json",
         'Authorization': props.token,
@@ -45,8 +54,8 @@ const BookCreate = (props) => {
       // .then((res) => res.json())
       // .then(res => res.text())
       // .then(text => console.log(text))
-      .then(res => res.json())
-      .then(json => console.log(json))
+      .then((res) => res.json())
+      .then((json) => console.log(json))
       .then(() => clearForm())
       // .then((res) => {
       //   console.log(res);
@@ -73,28 +82,15 @@ const BookCreate = (props) => {
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label htmlFor="author">*Author:</Label>
-          <Input
-            name="author"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-          />
+          <Input name='author' value={author} onChange={e => setAuthor(e.target.value)} />
         </FormGroup>
         <FormGroup>
           <Label htmlFor="title">*Title:</Label>
-          <Input
-            name="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
+          <Input name='title' value={title} onChange={e => setTitle(e.target.value)} />
         </FormGroup>
         <FormGroup>
           <Label htmlFor="genre">Genre:</Label>
-          <Input
-            type="select"
-            name="genre"
-            value={genre}
-            onChange={(e) => setGenre(e.target.value)}
-          >
+          <Input type='select' name='genre' value={genre} onChange={e => setGenre(e.target.value)}>
             <option value={null}></option>
             <option value="Fantasy">Fantasy</option>
             <option value="Mystery">Mystery</option>
@@ -106,36 +102,19 @@ const BookCreate = (props) => {
         </FormGroup>
         <FormGroup>
           <Label htmlFor="numOfPages">Total Number Of Pages:</Label>
-          <Input
-            name="numOfPages"
-            value={numOfPages}
-            onChange={(e) => setNumOfPages(e.target.value)}
-          />
+          <Input name="numOfPages" value={numOfPages} onChange={(e) => setNumOfPages(e.target.value)} />
         </FormGroup>
         <FormGroup>
           <Label htmlFor="yearPublished">Year Published:</Label>
-          <Input
-            name="yearPublished"
-            value={yearPublished}
-            onChange={(e) => setYearPublished(e.target.value)}
-          />
+          <Input name="yearPublished" value={yearPublished} onChange={(e) => setYearPublished(e.target.value)} />
         </FormGroup>
         <FormGroup>
           <Label htmlFor="description">Book Description:</Label>
-          <Input
-            name="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
+          <Input name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
         </FormGroup>
         <FormGroup>
           <Label htmlFor="readStatus">*Book Status:</Label>
-          <Input
-            type="select"
-            name="readStatus"
-            value={readStatus}
-            onChange={(e) => setReadStatus(e.target.value)}
-          >
+          <Input type="select" name="readStatus" value={readStatus} onChange={(e) => setReadStatus(e.target.value)}>
             <option value={null}></option>
             <option value="read">Already Read</option>
             <option value="reading">Currently Reading</option>
@@ -144,12 +123,7 @@ const BookCreate = (props) => {
         </FormGroup>
         <FormGroup>
           <Label htmlFor="rating">Rating:</Label>
-          <Input
-            type="select"
-            name="rating"
-            value={rating}
-            onChange={(e) => setRating(e.target.value)}
-          >
+          <Input type="select" name="rating" value={rating} onChange={(e) => setRating(e.target.value)}>
             <option value={null}></option>
             <option value="0">0</option>
             <option value="1">1</option>
@@ -159,11 +133,7 @@ const BookCreate = (props) => {
             <option value="5">5</option>
           </Input>
         </FormGroup>
-        {title && author && readStatus ? (
-          <Button type="submit">Add Book</Button>
-        ) : (
-          ""
-        )}
+        {title && author && readStatus ? <Button type="submit">Add Book</Button> : <></>}
       </Form>
     </div>
   );

@@ -5,19 +5,18 @@ const BookEdit = (props) => {
     const [editAuthor, setEditAuthor] = useState(props.bookToUpdate.author);
     const [editTitle, setEditTitle] = useState(props.bookToUpdate.title);
     const [editGenre, setEditGenre] = useState(props.bookToUpdate.genre);
-    const [editNumOfPages, setEditNumOfPages] = useState(props.bookToUpdate.numOfPages);
+    const [editNumOfPages, setEditNumOfPages] = useState(props.bookToUpdate.total_pages);
     const [editRating, setEditRating] = useState(props.bookToUpdate.rating);
-    const [editYearPublished, setEditYearPublished] = useState();
-    const [editDescription, setEditDescription] = useState('');
-    const [editReadStatus, setEditReadStatus] = useState('');
+    const [editYearPublished, setEditYearPublished] = useState(props.bookToUpdate.year_published);
+    const [editDescription, setEditDescription] = useState(props.bookToUpdate.description);
+    const [editReadStatus, setEditReadStatus] = useState(props.bookToUpdate.read_status);
 
     const handleSubmit = (e, book) => {
         e.preventDefault();
         const url = `http://localhost:5000/book/${props.bookToUpdate.id}`;
         const headers = {
             method: 'PUT',
-            body: JSON.stringify(
-        {book : {
+            body: JSON.stringify({
                 author: editAuthor,
                 title: editTitle, 
                 genre: editGenre,
@@ -26,8 +25,7 @@ const BookEdit = (props) => {
                 year_published: editYearPublished,
                 description: editDescription,
                 read_status: editReadStatus
-            }}
-            ),
+            }),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': props.token
@@ -57,8 +55,12 @@ const BookEdit = (props) => {
                     <FormGroup>
                         <Label htmlFor='genre'>Edit Genre:</Label>
                         <Input type='select' name='genre' value={editGenre} onChange={e => setEditGenre(e.target.value)}>
-                            <option value='Fantasy'>Fantasy</option>
-                            <option value='Non-Fiction'>Non-Fiction</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Mystery">Mystery</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Sci-Fi">Science Fiction</option>
+                            <option value="Self-Help">Self-Help</option>
+                            <option value="Non-Fiction">Non-Fiction</option>
                         </Input>
                     </FormGroup>
                     <FormGroup>
@@ -76,9 +78,9 @@ const BookEdit = (props) => {
                     <FormGroup>
                         <Label htmlFor='readStatus'>Book Status:</Label>
                         <Input type='select' name='readStatus' value={editReadStatus} onChange={e => setEditReadStatus(e.target.value)}>
-                            <option value='Read'>Already Read</option>
-                            <option value='Reading'>Currently Reading</option>
-                            <option value='To Read'>Wanting To Read</option>
+                            <option value='read'>Already Read</option>
+                            <option value='reading'>Currently Reading</option>
+                            <option value='to-read'>Wanting To Read</option>
                         </Input>
                     </FormGroup>
                     <FormGroup>

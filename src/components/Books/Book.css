@@ -1,0 +1,100 @@
+.book{
+    background-image: url(./bookBg.PNG);
+    height: 500px;
+    width: 700px;
+}
+
+.bookBinding{
+    margin: auto;
+    height: 500px;
+    width: 700px;
+    background-color: darkblue;
+    position: relative;
+    z-index: -1;
+}
+
+.pages{
+    background-color: wheat;
+    height: 450px;
+    width: 600px;
+    /* margin: auto; */
+    margin-top: 25px;
+    margin-left: 50px;
+    position: absolute;
+    z-index: 1;
+}
+
+.bookmark{
+    width: 30px;
+    height: 550px;
+    background-color: darkred;
+    margin-left: 325px;
+    z-index: 3;
+    position: relative;
+}
+
+.bookmarkEnd{
+    width: 0;
+	height: 0;
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+    border-bottom: 30px solid white;
+    position: absolute;
+    /* margin-left: 315px; */
+    margin-top: 520px;
+    z-index: 4;
+}
+
+.topPage{
+    height: 50px;
+    width: 300px;
+    /* margin-top: 100px; */
+    /* margin-right: 200px; */
+    margin-left: 50px;
+    border-radius: 50% 50% 0 0;
+    background-color: wheat;
+    position: absolute;
+    z-index: 0;
+}
+
+.topPage2{
+    height: 50px;
+    width: 300px;
+    /* margin-top: 100px; */
+    /* margin-right: 200px; */
+    margin-left: 350px;
+    border-radius: 50% 50% 0 0;
+    background-color: wheat;
+    position: absolute;
+    z-index: 0;
+}
+
+.bottomPage{
+    height: 50px;
+    width: 300px;
+    /* margin-top: 100px; */
+    /* margin-right: 200px; */
+    margin-left: 50px;
+    margin-top: 425px;
+    border-radius: 50% 50% 0 0;
+    background-color: gray;
+    position: absolute;
+    z-index: 2;
+}
+
+.bottomPage2{
+    height: 50px;
+    width: 300px;
+    /* margin-top: 100px; */
+    /* margin-right: 200px; */
+    margin-left: 350px;
+    margin-top: 425px;
+    border-radius: 50% 50% 0 0;
+    background-color: gray;
+    position: absolute;
+    z-index: 2;
+}
+
+.page2{
+    margin-left: 310px;
+}

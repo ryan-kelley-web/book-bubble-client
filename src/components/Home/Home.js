@@ -50,12 +50,11 @@ export default function Home(props) {
                         <Router>
                             <Row>
                                 <Col sm="3">
-                                    <BubbleBar clickLogout={props.clickLogout} />
+                                    <BubbleBar clickLogout={props.clickLogout} createOn={createOn} />
                                 </Col>
                                 <Col >
                                     <Switch>
                                         <Route path="/book/create">
-                                            <BookCreate token={props.token} createOn={createOn} createOff={createOff} />
                                             {createOpen ? 
                                             <BookCreate token={props.token} createOn={createOn} createOff={createOff} /> : 
                                             <> </> }

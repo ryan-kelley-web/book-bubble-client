@@ -33,11 +33,11 @@ const Signup = (props) => {
     return (
         <form>
 
-            <h1>Welcome to BookBubble!!!</h1> 
+            <h1 class="text-primary">Welcome to BookBubble!!!</h1> 
 
             <br/>
 
-            <h2>Start Reading Better Today. Sign Up Below.</h2>
+            <h2 class="text-primary">Start Reading Better Today</h2>
 {/* 
             <input
                 type="name"
@@ -47,6 +47,7 @@ const Signup = (props) => {
                 required
             /> */}
             <br />
+            <h1 class="text-primary">Sign Up</h1>
             <input
                 type="email"
                 id="email"
@@ -65,6 +66,7 @@ const Signup = (props) => {
             <br />
             <Button onClick={signupButton} color="primary"  >Submit</Button>
             <br />
+            <br/><br/><br/><br/>
         </form>
     )
 };

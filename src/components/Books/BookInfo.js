@@ -5,6 +5,7 @@ import {Button, Form, FormGroup, Label, Container, Row, Col, Progress} from 'rea
 const BookInfo = (props) => {
 
     const deleteBook = (book) => {
+        console.log("Delete book id:", book.id);
         const url = `http://localhost:5000/book/${book.id}`;
         const options = {
             method: 'DELETE', 

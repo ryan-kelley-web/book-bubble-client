@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Button} from 'reactstrap';
 import './Auth.css';
 
 
@@ -32,15 +33,19 @@ const Signup = (props) => {
     return (
         <form>
 
-            <h1>Sign Up Today!</h1>
+            <h1>Welcome to BookBubble!!!</h1> 
 
+            <br/>
+
+            <h2>Start Reading Better Today. Sign Up Below.</h2>
+{/* 
             <input
                 type="name"
                 placeholder="Your Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)} name="name"
                 required
-            />
+            /> */}
             <br />
             <input
                 type="email"
@@ -58,7 +63,7 @@ const Signup = (props) => {
                 onChange={(e) => setPassword(e.target.value)} />
             <br />
             <br />
-            <button onClick={signupButton}   >Submit</button>
+            <Button onClick={signupButton} color="primary"  >Submit</Button>
             <br />
         </form>
     )

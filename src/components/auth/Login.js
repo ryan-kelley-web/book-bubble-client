@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react';  
+import {Button} from 'reactstrap';
 
 
 const Login = (props) => {
@@ -44,7 +45,7 @@ const Login = (props) => {
                 required />
                 <br/><br/>
 
-            <button onClick={loginButton}>Login</button>
+            <Button onClick={loginButton} color="primary">Login</Button>
         </div>
 
 

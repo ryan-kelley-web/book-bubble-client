@@ -10,8 +10,10 @@ import Read from './components/Shelves/Read';
 import Reading from './components/Shelves/Reading';
 import ToRead from './components/Shelves/ToRead';
 import BubbleBar from './components/Navbar/BubbleBar';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import BookCreate from './components/Books/BookCreate';
+import BookEdit from './components/Books/BookEdit';
+import BookInfo from './components/Books/BookInfo';
 
 
 
@@ -34,7 +36,9 @@ function App() {
   const clearToken = () => {
     localStorage.clear();
     setSessionToken('');
+    console.log('token cleared');
   }
+
 
   // //adding func to take user to Home once signed/logged in with a token
   // function protectedViews() {
@@ -44,45 +48,39 @@ function App() {
   //LC added this --- we need to pass the token to all the components here, so list your components just like Read, Reading, ToRead!
   //RK added Home to protectedViews()
   const protectedViews = () => {
-    return(sessionToken === localStorage.getItem('token') ? <Home token={sessionToken} /> : <Auth updateToken={updateToken} />)
+
+
+    // return(sessionToken === localStorage.getItem('token') 
+    // ?<div> 
+    //   <Read token={sessionToken}/>
+    //   <Home token={sessionToken}/>
+    // </div>
+    // : <Auth updateToken={updateToken}/>
+    // )
+
+    return(sessionToken === localStorage.getItem('token') ? <Home token={sessionToken} clickLogout={clearToken} /> : (<Router><Redirect to='/' /><Auth updateToken={updateToken} /></Router>))
     // ?<div> 
     //   {/* <Read token={sessionToken}/> */}
     //   <Home token={sessionToken}/>
     // {/* </div> */}
     // : <Auth updateToken={updateToken}/>
     // )
+//here the Router redirects us to the Auth route instead of Read, etc. paths
   }
+
 
   //LC addded the line running protectedViews also
   return (
 
     
       <div>
-        ***App***
         {/* <Auth updateToken={updateToken} /> */}
         {protectedViews()}
-        {console.log('App Session Token:', sessionToken)}
-        <Router>
-          <BubbleBar clickLogout={clearToken}/>
-          
-          <Switch>
-            <Route path='/book/create'>
-                <BookCreate token={sessionToken} />
-            </Route>
-            <Route path='/book/read'>
-              <Read />
-            </Route>
-            <Route path='/book/reading'>
-              <Reading />
-            </Route>
-            <Route path='/book/to-read'>
-              <ToRead />
-            </Route>
-        </Switch>
-        </Router>
+        {/* {console.log('App Session Token:', sessionToken)} */}
+     
       </div>
  
   );
-}
+  }
 
 export default App;

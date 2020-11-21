@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {Table, Button} from 'reactstrap'; //figure out how to do this with material UI
-//import BookEdit from '../Books/BookEdit'; //will need to match the component we "link to" with the button
+import {Table, Button} from 'reactstrap'; 
+import BookEdit from '../Books/BookEdit';
 import BookInfo from '../Books/BookInfo';
-
 
 const Read = (props) => { 
 
     const [books, setBooks] = useState([]);
+    const [updateActive, setUpdateActive] = useState(false);
+    const [bookToUpdate, setBookToUpdate] = useState({});
+    const [infoActive, setInfoActive] = useState(false);
 
     const fetchBooks = () => {
         fetch('http://localhost:5000/book/read', { 
@@ -16,13 +18,34 @@ const Read = (props) => {
                 'Authorization': props.token
             })
         }) 
-        //.then(res => console.log(res))
-        .then( (res) => res.json())
+        //.then((res) => console.log(res.json()))
+        .then((res) => res.json())
         .then((bookData)=> {
             setBooks(bookData)
             console.log(bookData);
         })
     };
+
+    const editUpdateBook = (book) =>{
+      setBookToUpdate(book);
+      console.log(book);
+    }
+  
+    const updateOn = () => {
+      setUpdateActive(true);
+    }
+
+    const updateOff = () => {
+      setUpdateActive(false);
+    }
+
+    const infoOn = () => {
+      setInfoActive(true);
+    }
+
+    const infoOff = () => {
+      setInfoActive(false);
+    }
 
     useEffect(()=> {
         fetchBooks(); 
@@ -36,30 +59,31 @@ const Read = (props) => {
                     <td>{book.author}</td>
                     <td>{book.year_published}</td>
                     <td>
-                        <Button color="info" onClick={()=> {return(BookInfo)}}>See More</Button> 
+                    <Button color="primary" onClick={()=> {editUpdateBook(book); infoOn()}}>More Info</Button>
                     </td>
                 </tr>
             )
         })
     }
-    //does the button go to BookEdit? Do we still have a Book or BookDisplay component to display the details of each book?
 
  return (
     <>
       <h3>Books Read</h3>
       <hr />
-      <Table striped>
+      <Table striped className="table">
         <thead>
           <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Year Published</th>
+            <th sm="6">Title</th>
+            <th sm="6">Author</th>
+            <th sm="6">Year Published</th>
           </tr>
         </thead>
         <tbody>
           {bookMapper()}
         </tbody>
       </Table>
+      {infoActive ? <BookInfo book={bookToUpdate} infoOff={infoOff} updateOn={updateOn} updateOff={updateOff} fetchBooks={fetchBooks} token={props.token} /> : <></>}
+      {updateActive ? <BookEdit bookToUpdate={bookToUpdate} infoOff={infoOff} updateOff={updateOff} fetchBooks={fetchBooks} token={props.token} /> : <></>}
     </>
   );
 };

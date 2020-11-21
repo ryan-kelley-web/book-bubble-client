@@ -1,10 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {Table, Button} from 'reactstrap'; //figure out how to do this with material UI
 import BookEdit from '../Books/BookEdit'; //will need to match the component we "link to" with the button
+import BookInfo from '../Books/BookInfo';
 
 const ToRead = (props) => { 
 
     const [books, setBooks] = useState([]);
+    const [updateActive, setUpdateActive] = useState(false);
+    const [bookToUpdate, setBookToUpdate] = useState({});
+    const [infoActive, setInfoActive] = useState(false);
 
     const fetchBooks = () => {
         fetch('http://localhost:5000/book/to-read', { 
@@ -22,6 +26,27 @@ const ToRead = (props) => {
         })
     };
 
+    const editUpdateBook = (book) =>{
+      setBookToUpdate(book);
+      console.log(book);
+    }
+  
+    const updateOn = () => {
+      setUpdateActive(true);
+    }
+
+    const updateOff = () => {
+      setUpdateActive(false);
+    }
+
+    const infoOn = () => {
+      setInfoActive(true);
+    }
+
+    const infoOff = () => {
+      setInfoActive(false);
+    }
+
     useEffect(()=> {
         fetchBooks(); 
     }, [])
@@ -34,7 +59,7 @@ const ToRead = (props) => {
                     <td>{book.author}</td>
                     <td>{book.year_published}</td>
                     <td>
-                        <Button color="info" onClick={()=> {return(BookEdit)}}>See More</Button> 
+                    <Button color="primary" onClick={()=> {editUpdateBook(book); infoOn()}}>More Info</Button>
                     </td>
                 </tr>
             )
@@ -46,7 +71,7 @@ const ToRead = (props) => {
     <>
       <h3>Books To Read</h3>
       <hr />
-      <Table striped>
+      <Table striped className="table">
         <thead>
           <tr>
             <th>Title</th>
@@ -58,6 +83,8 @@ const ToRead = (props) => {
           {bookMapper()}
         </tbody>
       </Table>
+      {infoActive ? <BookInfo book={bookToUpdate} infoOff={infoOff} updateOn={updateOn} updateOff={updateOff} fetchBooks={fetchBooks} token={props.token} /> : <></>}
+      {updateActive ? <BookEdit bookToUpdate={bookToUpdate} infoOff={infoOff} updateOff={updateOff} fetchBooks={fetchBooks} token={props.token} /> : <></>}
     </>
   );
 };

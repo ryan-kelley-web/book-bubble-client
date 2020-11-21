@@ -1,40 +1,83 @@
-import React, { useState } from 'react';
-import { Alert } from 'reactstrap'; import { Badge } from 'reactstrap';
-import LeftArrow from './home-assets/left_arrow.png';
-import BubbleBar from '../Navbar/BubbleBar';
-
-
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col, Modal, ModalBody, Button } from "reactstrap";
+import LeftArrow from "./home-assets/left_arrow.png";
+import BubbleBar from "../Navbar/BubbleBar";
+import BookCreate from "../Books/BookCreate";
+import Read from "../Shelves/Read";
+import Reading from "../Shelves/Reading";
+import ToRead from "../Shelves/ToRead";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
+import Search from "../Shelves/Search";
+import Alert from './Alert';
 
 export default function Home(props) {
-
     const [visible, setVisible] = useState(true);
     const onDismiss = () => setVisible(false);
+    const [alertOpen, setAlertOpen] = useState(true);
+    const [createOpen, setCreateOpen] = useState(false);
+
+
+    function alertOff() {
+        setAlertOpen(false);
+    }
+
+    function createOn() {
+        setCreateOpen(true);
+    }
+
+    function createOff() {
+        setCreateOpen(false);
+    }
 
     return (
 
 
         <div>
-            ***Home***
+
             <h1>BookBubble</h1>
-            <Alert color="dark" isOpen={visible} toggle={onDismiss}>
-                <p>Welcome to your Bubble!</p>
-                <br/>
-                <p>Your <b>Bubble</b> is a virtual reading room that is secluded - in a, "bubble," - from the rest of the world and web. </p><br/>
-                <p>You can use your Bubble to organize book collections, monitor reading progress, and pick up some best practices along the way.</p>
-                    <br />
-                    <p>Add any book or books of your choosing and store them on one of three <b>Shelves</b>:</p>
-               <br/> <ul>
-                        <li>Books you’ve already <b>Read</b></li><br />
-                        <li>Books you want <b>To Read</b></li><br />
-                        <li>Books you’re currently <b>Reading</b></li><br />
-                    </ul><br/>
-        <p>Also, for features and strategies to help you read faster and remember important discoveries made on your reading adventures, be sure to check out the <b>Reading Dojo</b>.</p> <br />
-                    <img src={LeftArrow} /><p>You can access all of this using the <b>BubbleBar</b>. Now click 'Add Book' to begin your BookBubble collection!
-        </p>
-            </Alert>
+            <Container>
+                <Row>
+                    <Col md="9">
+                       {alertOpen ? <Alert alertOff={alertOff}/> : <> </>}
+                    </Col>
+                </Row>
+            </Container>
 
+
+            <Container>
+                <Row>
+                    <Col md="9">
+                        <Router>
+                            <Row>
+                                <Col sm="3">
+                                    <BubbleBar clickLogout={props.clickLogout} createOn={createOn} />
+                                </Col>
+                                <Col >
+                                    <Switch>
+                                        <Route path="/book/create">
+                                            {createOpen ? 
+                                            <BookCreate token={props.token} createOn={createOn} createOff={createOff} /> : 
+                                            <> </> }
+                                        </Route>
+                                        <Route path="/book/read">
+                                            <Read token={props.token} />
+                                        </Route>
+                                        <Route path="/book/reading">
+                                            <Reading token={props.token} />
+                                        </Route>
+                                        <Route path="/book/to-read">
+                                            <ToRead token={props.token} />
+                                        </Route>
+                                        <Route path="/book/search">
+                                            <Search token={props.token} />
+                                        </Route>
+                                    </Switch>
+                                </Col>
+                            </Row>
+                        </Router>
+                    </Col>
+                </Row>
+            </Container>
         </div>
-
-
-    )
+    );
 }

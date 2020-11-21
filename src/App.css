@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+
+.table {
+ border: 0 !important;
+}
+
+.table th, .table tr .table thead {
+  border: 0 !important;
+ }
+
+ hr {
+  border: 0 !important;
+ }

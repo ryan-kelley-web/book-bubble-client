@@ -8,6 +8,7 @@ const ToRead = (props) => {
     const [books, setBooks] = useState([]);
     const [updateActive, setUpdateActive] = useState(false);
     const [bookToUpdate, setBookToUpdate] = useState({});
+    const [infoActive, setInfoActive] = useState(false);
 
     const fetchBooks = () => {
         fetch('http://localhost:5000/book/to-read', { 
@@ -36,6 +37,14 @@ const ToRead = (props) => {
 
     const updateOff = () => {
       setUpdateActive(false);
+    }
+
+    const infoOn = () => {
+      setInfoActive(true);
+    }
+
+    const infoOff = () => {
+      setInfoActive(false);
     }
 
     useEffect(()=> {
@@ -74,7 +83,7 @@ const ToRead = (props) => {
           {bookMapper()}
         </tbody>
       </Table>
-      {updateActive ? <BookInfo book={bookToUpdate} bookToUpdate={bookToUpdate} updateOff={updateOff} fetchBooks={fetchBooks} /> : <></>}
+      {infoActive ? <BookInfo book={bookToUpdate} infoOff={infoOff} updateOff={updateOff} fetchBooks={fetchBooks} token={props.token} /> : <></>}
     </>
   );
 };

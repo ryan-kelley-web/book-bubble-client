@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Button, Form, FormGroup, Label, Container, Row, Col, Progress, Modal, ModalBody} from 'reactstrap';
 
 
+
 const BookInfo = (props) => {
 
     const deleteBook = (book) => {

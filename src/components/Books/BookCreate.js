@@ -50,6 +50,8 @@ const BookCreate = (props) => {
     };
     // console.log(headers.body);
 
+    console.log(options.body);
+
     fetch(url, options)
       // .then((res) => res.json())
       // .then(res => res.text())
@@ -142,7 +144,6 @@ const BookCreate = (props) => {
 export default BookCreate;
 
 /*
-
         author: req.body.author,
         title: req.body.title,
         genre: req.body.genre,
@@ -150,6 +151,4 @@ export default BookCreate;
         rating: req.body.rating,
         description: req.body.description,
         year_published: req.body.year_published,
-        read_status: req.body.read_status,
-
-*/
+        read_status: req.body.read_status, */

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Form, FormGroup, Label, Container, Row, Col, Progress} from 'reactstrap';
+import {Button, Form, FormGroup, Label, Container, Row, Col} from 'reactstrap';
 
 
 const BookInfo = (props) => {

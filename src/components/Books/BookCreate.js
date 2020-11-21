@@ -84,6 +84,9 @@ const BookCreate = (props) => {
       <h3>Create A Book</h3>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
+          <Button onClick={props.createOff}>X</Button>
+        </FormGroup>
+        <FormGroup>
           <Label htmlFor="author">*Author:</Label>
           <Input name='author' value={author} onChange={e => setAuthor(e.target.value)} />
         </FormGroup>

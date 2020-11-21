@@ -15,7 +15,7 @@ export default function BubbleBar(props) {
         <h2>BubbleBar</h2>
         <Nav vertical>
           <NavItem>
-            <Link to='/book/create'>Add Book</Link>
+            <Link to='/book/create' onClick={props.createOn}>Add Book</Link>
           </NavItem>
           <h3>Shelves</h3>
           <NavItem>

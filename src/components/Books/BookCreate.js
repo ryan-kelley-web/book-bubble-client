@@ -57,7 +57,8 @@ const BookCreate = (props) => {
       // .then(res => res.text())
       // .then(text => console.log(text))
       .then((res) => res.json())
-      .then((json) => console.log(json))
+      .then(() => props.createOff())
+      // .then((json) => console.log(json))
       .then(() => clearForm())
       // .then((res) => {
       //   console.log(res);

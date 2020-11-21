@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Label, Input, Modal, ModalBody } from "reactstrap";
+import './Book.css';
 
 const BookCreate = (props) => {
   const [author, setAuthor] = useState("");
@@ -78,6 +79,74 @@ const BookCreate = (props) => {
   //   setReadStatus("");
   //   setYearPublished(0);
   // };
+
+  // return (
+  //   <Modal isOpen={true}>
+  //     <ModalBody className='book'>
+  //     <h3>Create A Book</h3>
+  //     <Form onSubmit={handleSubmit}>
+  //       <FormGroup>
+  //         <Button onClick={props.createOff}>X</Button>
+  //       </FormGroup>
+  //       <FormGroup>
+  //         <Label htmlFor="author">*Author:</Label>
+  //         <Input name='author' value={author} onChange={e => setAuthor(e.target.value)} />
+  //       </FormGroup>
+  //       <FormGroup>
+  //         <Label htmlFor="title">*Title:</Label>
+  //         <Input name='title' value={title} onChange={e => setTitle(e.target.value)} />
+  //       </FormGroup>
+  //       <FormGroup>
+  //         <Label htmlFor="genre">Genre:</Label>
+  //         <Input type='select' name='genre' value={genre} onChange={e => setGenre(e.target.value)}>
+  //           <option value={null}></option>
+  //           <option value="Fantasy">Fantasy</option>
+  //           <option value="Mystery">Mystery</option>
+  //           <option value="Romance">Romance</option>
+  //           <option value="Sci-Fi">Science Fiction</option>
+  //           <option value="Self-Help">Self-Help</option>
+  //           <option value="Non-Fiction">Non-Fiction</option>
+  //         </Input>
+  //       </FormGroup>
+  //       <FormGroup>
+  //         <Label htmlFor="numOfPages">Total Number Of Pages:</Label>
+  //         <Input name="numOfPages" value={numOfPages} onChange={(e) => setNumOfPages(e.target.value)} />
+  //       </FormGroup>
+  //       <FormGroup>
+  //         <Label htmlFor="yearPublished">Year Published:</Label>
+  //         <Input name="yearPublished" value={yearPublished} onChange={(e) => setYearPublished(e.target.value)} />
+  //       </FormGroup>
+  //       <FormGroup>
+  //         <Label htmlFor="description">Book Description:</Label>
+  //         <Input name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+  //       </FormGroup>
+  //       <FormGroup>
+  //         <Label htmlFor="readStatus">*Book Status:</Label>
+  //         <Input type="select" name="readStatus" value={readStatus} onChange={(e) => setReadStatus(e.target.value)}>
+  //           <option value={null}></option>
+  //           <option value="read">Already Read</option>
+  //           <option value="reading">Currently Reading</option>
+  //           <option value="to-read">Wanting To Read</option>
+  //         </Input>
+  //       </FormGroup>
+  //       <FormGroup>
+  //         <Label htmlFor="rating">Rating:</Label>
+  //         <Input type="select" name="rating" value={rating} onChange={(e) => setRating(e.target.value)}>
+  //           <option value={null}></option>
+  //           <option value="0">0</option>
+  //           <option value="1">1</option>
+  //           <option value="2">2</option>
+  //           <option value="3">3</option>
+  //           <option value="4">4</option>
+  //           <option value="5">5</option>
+  //         </Input>
+  //       </FormGroup>
+  //       {title && author && readStatus ? <Button type="submit">Add Book</Button> : <></>}
+  //     </Form>
+  //     </ModalBody>
+  //   </Modal>
+  // );
+
 
   return (
     <Modal isOpen={true}>

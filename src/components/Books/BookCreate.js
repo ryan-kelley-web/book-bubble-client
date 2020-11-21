@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, Modal, ModalBody } from "reactstrap";
 
 const BookCreate = (props) => {
   const [author, setAuthor] = useState("");
@@ -79,7 +79,8 @@ const BookCreate = (props) => {
   };
 
   return (
-    <div>
+    <Modal isOpen={true}>
+      <ModalBody>
       <h3>Create A Book</h3>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
@@ -137,7 +138,8 @@ const BookCreate = (props) => {
         </FormGroup>
         {title && author && readStatus ? <Button type="submit">Add Book</Button> : <></>}
       </Form>
-    </div>
+      </ModalBody>
+    </Modal>
   );
 };
 

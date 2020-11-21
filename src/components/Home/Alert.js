@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Modal, ModalBody, Button } from "reactstrap";
-import LeftArrow from "./home-assets/left_arrow.png";
 import BubbleBar from "../Navbar/BubbleBar";
-import BookCreate from "../Books/BookCreate";
-import Read from "../Shelves/Read";
-import Reading from "../Shelves/Reading";
-import ToRead from "../Shelves/ToRead";
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
-import Search from "../Shelves/Search";
 
 
 export default function Alert(props) {

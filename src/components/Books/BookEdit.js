@@ -13,7 +13,8 @@ const BookEdit = (props) => {
 
     const handleSubmit = (e, book) => {
         e.preventDefault();
-        const url = `http://localhost:5000/book/${props.bookToUpdate.id}`;
+        const url = `http://localhost:5000/book/edit/${props.bookToUpdate.id}`;
+        console.log(url);
         const headers = {
             method: 'PUT',
             body: JSON.stringify({
@@ -32,8 +33,10 @@ const BookEdit = (props) => {
             })
         };
         fetch(url, headers)
-            .then(res => {
+            .then(() => {
                 props.fetchBooks();
+                props.updateOff();
+                props.infoOff();
              // props.updateOff(); --- put this as an on submit below
             })
             .catch(err => console.log('Book Edit Fetch Error:', err));
@@ -94,7 +97,8 @@ const BookEdit = (props) => {
                             <option value='5'>5</option>
                         </Input>
                     </FormGroup>
-                    <Button type='submit' onClick={()=> {props.updateOff()}}>Update Book</Button>
+                    <Button type='submit'>Update Book</Button>
+                    {/* <Button type='submit' onClick={()=> {props.updateOff()}}>Update Book</Button> */}
                 </Form>
             </ModalBody>
         </Modal>

@@ -59,7 +59,7 @@ const Reading = (props) => {
                     <td>{book.author}</td>
                     <td>{book.year_published}</td>
                     <td>
-                    <Button color="primary" onClick={()=> {editUpdateBook(book); updateOn()}}>Edit Book</Button>
+                    <Button color="primary" onClick={()=> {editUpdateBook(book); infoOn()}}>More Info</Button>
                     </td>
                 </tr>
             )
@@ -83,7 +83,8 @@ const Reading = (props) => {
           {bookMapper()}
         </tbody>
       </Table>
-      {infoActive ? <BookInfo book={bookToUpdate} infoOff={infoOff} updateOff={updateOff} fetchBooks={fetchBooks} token={props.token} /> : <></>}
+      {infoActive ? <BookInfo book={bookToUpdate} infoOff={infoOff} updateOn={updateOn} updateOff={updateOff} fetchBooks={fetchBooks} token={props.token} /> : <></>}
+      {updateActive ? <BookEdit bookToUpdate={bookToUpdate} infoOff={infoOff} updateOff={updateOff} fetchBooks={fetchBooks} token={props.token} /> : <></>}
     </>
   );
 };

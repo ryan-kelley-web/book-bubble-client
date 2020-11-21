@@ -15,25 +15,6 @@ const BookCreate = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const url = "http://localhost:5000/book/create";
-<<<<<<< HEAD
-    let book = { author: author, title: title, read_status: readStatus }; //changed readStatus to read_status. RK via IM. //changed back due to error. 
-    if (genre) {
-      book.genre = genre;
-    }
-    if (numOfPages) {
-      book.total_pages = numOfPages;
-    }
-    if (rating) {
-      book.rating = rating;
-    }
-    if (description) {
-      book.description = description;
-    }
-    if (yearPublished) {
-      book.yearPublished = yearPublished;
-    }
-    const headers = {
-=======
     // let book = { author: author, title: title, read_status: readStatus };
     // if (genre) {
     //   book.genre = genre;
@@ -51,7 +32,6 @@ const BookCreate = (props) => {
     //   book.yearPublished = yearPublished;
     // }
     const options = {
->>>>>>> 0b7f3916f111de5f7b584d791398a0b7c18e8934
       method: "POST",
       body: JSON.stringify({
         author: author,
@@ -69,6 +49,8 @@ const BookCreate = (props) => {
       }),
     };
     // console.log(headers.body);
+
+    console.log(options.body);
 
     fetch(url, options)
       // .then((res) => res.json())
@@ -162,7 +144,6 @@ const BookCreate = (props) => {
 export default BookCreate;
 
 /*
-
         author: req.body.author,
         title: req.body.title,
         genre: req.body.genre,
@@ -170,6 +151,4 @@ export default BookCreate;
         rating: req.body.rating,
         description: req.body.description,
         year_published: req.body.year_published,
-        read_status: req.body.read_status,
-
-*/
+        read_status: req.body.read_status, */

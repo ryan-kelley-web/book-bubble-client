@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Table, Button} from 'reactstrap'; 
 import BookEdit from '../Books/BookEdit';
+import BookInfo from '../Books/BookInfo';
 
 const Read = (props) => { 
 
@@ -72,7 +73,7 @@ const Read = (props) => {
           {bookMapper()}
         </tbody>
       </Table>
-      {updateActive ? <BookEdit bookToUpdate={bookToUpdate} updateOff={updateOff} fetchBooks={fetchBooks} /> : <></>}
+      {updateActive ? <BookInfo book={bookToUpdate} bookToUpdate={bookToUpdate} updateOff={updateOff} fetchBooks={fetchBooks} /> : <></>}
     </>
   );
 };

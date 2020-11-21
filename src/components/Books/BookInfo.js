@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Form, FormGroup, Label, Container, Row, Col, Progress} from 'reactstrap';
+import {Button, Form, FormGroup, Label, Container, Row, Col} from 'reactstrap';
 
 
 const BookInfo = (props) => {
@@ -40,7 +40,7 @@ const BookInfo = (props) => {
                     <Label htmlFor='numOfPages'>Total Number Of Pages:</Label>
                     <Label name='numOfPages'>{props.book.total_pages}</Label>
                     {/* //attempting progress bar add */}
-                    <Progress value="25">25%</Progress>
+                    {/* <Progress value="25">25%</Progress> */}
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor='yearPublished'>Year Published:</Label>

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Table, Button} from 'reactstrap'; //figure out how to do this with material UI
+import API_URL from '../../env';
 import BookEdit from '../Books/BookEdit'; //will need to match the component we "link to" with the button
 import BookInfo from '../Books/BookInfo';
 
@@ -11,7 +12,7 @@ const Reading = (props) => {
     const [infoActive, setInfoActive] = useState(false);
 
     const fetchBooks = () => {
-        fetch('http://localhost:5000/book/reading', { 
+        fetch(`${API_URL}/book/reading`, { 
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Button} from 'reactstrap';
+import API_URL from '../../env';
 import './Auth.css';
 
 
@@ -12,7 +13,7 @@ const Signup = (props) => {
 
     const signupButton = (e) => {
         e.preventDefault()
-        const url = 'http://localhost:5000/user/create'
+        const url = `${API_URL}/user/create`
         // const body = {
         //     name: name,
         //     email: email,

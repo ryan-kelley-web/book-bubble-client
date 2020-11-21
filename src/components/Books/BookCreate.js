@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Label, Input, Modal, ModalBody } from "reactstrap";
+import API_URL from "../../env";
 import './Book.css';
 
 const BookCreate = (props) => {
@@ -15,7 +16,7 @@ const BookCreate = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const url = "http://localhost:5000/book/create";
+    const url = `${API_URL}/book/create`;
     // let book = { author: author, title: title, read_status: readStatus };
     // if (genre) {
     //   book.genre = genre;

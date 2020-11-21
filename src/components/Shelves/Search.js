@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Table, Button} from 'reactstrap'; //figure out how to do this with material UI
 import BookEdit from '../Books/BookEdit'; //will need to match the component we "link to" with the button
+import API_URL from '../../env';
 
 const Search = (props) => { 
 
@@ -10,7 +11,7 @@ const Search = (props) => {
     const [bookToUpdate, setBookToUpdate] = useState({});
 
     const fetchBooks = () => {
-        fetch(`http://localhost:5000/book/search/${query}`, { 
+        fetch(`${API_URL}/book/search/${query}`, { 
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',

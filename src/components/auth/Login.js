@@ -1,5 +1,6 @@
 import React, { useState } from 'react';  
 import {Button} from 'reactstrap';
+import API_URL from '../../env';
 
 
 const Login = (props) => {
@@ -8,7 +9,7 @@ const Login = (props) => {
 
     const loginButton = (e) => { //!!!
         e.preventDefault()
-        const url = 'http://localhost:5000/user/login'
+        const url = `${API_URL}/user/login`
         const body = {
             email: email,
             password: password

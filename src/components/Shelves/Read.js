@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Table, Button} from 'reactstrap'; 
+import API_URL from '../../env';
 import BookEdit from '../Books/BookEdit';
 import BookInfo from '../Books/BookInfo';
 
@@ -11,7 +12,7 @@ const Read = (props) => {
     const [infoActive, setInfoActive] = useState(false);
 
     const fetchBooks = () => {
-        fetch('http://localhost:5000/book/read', { 
+        fetch(`${API_URL}/book/read`, { 
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',

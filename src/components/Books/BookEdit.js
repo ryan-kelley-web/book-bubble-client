@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import API_URL from '../../env';
 
 const BookEdit = (props) => {
     const [editAuthor, setEditAuthor] = useState(props.bookToUpdate.author);
@@ -13,7 +14,7 @@ const BookEdit = (props) => {
 
     const handleSubmit = (e, book) => {
         e.preventDefault();
-        const url = `http://localhost:5000/book/edit/${props.bookToUpdate.id}`;
+        const url = `${API_URL}/book/edit/${props.bookToUpdate.id}`;
         console.log(url);
         const headers = {
             method: 'PUT',

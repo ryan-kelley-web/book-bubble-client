@@ -56,6 +56,9 @@ export default function Home(props) {
                                     <Switch>
                                         <Route path="/book/create">
                                             <BookCreate token={props.token} createOn={createOn} createOff={createOff} />
+                                            {createOpen ? 
+                                            <BookCreate token={props.token} createOn={createOn} createOff={createOff} /> : 
+                                            <> </> }
                                         </Route>
                                         <Route path="/book/read">
                                             <Read token={props.token} />

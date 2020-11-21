@@ -56,10 +56,10 @@ const BookCreate = (props) => {
       // .then((res) => res.json())
       // .then(res => res.text())
       // .then(text => console.log(text))
-      .then((res) => res.json())
+      .then(res => res.json())
       .then(() => props.createOff())
       // .then((json) => console.log(json))
-      .then(() => clearForm())
+      // .then(() => clearForm())
       // .then((res) => {
       //   console.log(res);
       // })
@@ -68,16 +68,16 @@ const BookCreate = (props) => {
     // clearForm();
   };
 
-  const clearForm = () => {
-    setAuthor("");
-    setTitle("");
-    setGenre("");
-    setNumOfPages(0);
-    setRating("");
-    setDescription("");
-    setReadStatus("");
-    setYearPublished(0);
-  };
+  // const clearForm = () => {
+  //   setAuthor("");
+  //   setTitle("");
+  //   setGenre("");
+  //   setNumOfPages(0);
+  //   setRating("");
+  //   setDescription("");
+  //   setReadStatus("");
+  //   setYearPublished(0);
+  // };
 
   return (
     <Modal isOpen={true}>

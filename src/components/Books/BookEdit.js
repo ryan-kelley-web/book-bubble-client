@@ -48,6 +48,9 @@ const BookEdit = (props) => {
             <ModalBody>
                 <Form onSubmit={handleSubmit}>
                     <FormGroup>
+                        <Button onClick={props.updateOff}>X</Button>
+                    </FormGroup>
+                    <FormGroup>
                         <Label htmlFor='author'>Edit Author:</Label>
                         <Input name='author' value={editAuthor} onChange={e => setEditAuthor(e.target.value)} />
                     </FormGroup>

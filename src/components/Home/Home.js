@@ -34,7 +34,7 @@ export default function Home(props) {
 
         <div>
 
-            <h1>BookBubble</h1>
+            <h1 >BookBubble</h1>
             <Container>
                 <Row>
                     <Col md="9">

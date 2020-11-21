@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Table, Button} from 'reactstrap'; //figure out how to do this with material UI
 import BookEdit from '../Books/BookEdit'; //will need to match the component we "link to" with the button
+import BookInfo from '../Books/BookInfo';
 
 const ToRead = (props) => { 
 
@@ -49,7 +50,7 @@ const ToRead = (props) => {
                     <td>{book.author}</td>
                     <td>{book.year_published}</td>
                     <td>
-                    <Button color="warning" onClick={()=> {editUpdateBook(book); updateOn()}}>See More</Button>
+                    <Button color="primary" onClick={()=> {editUpdateBook(book); updateOn()}}>Edit Book</Button>
                     </td>
                 </tr>
             )
@@ -61,7 +62,7 @@ const ToRead = (props) => {
     <>
       <h3>Books To Read</h3>
       <hr />
-      <Table striped>
+      <Table striped className="table">
         <thead>
           <tr>
             <th>Title</th>
@@ -73,7 +74,7 @@ const ToRead = (props) => {
           {bookMapper()}
         </tbody>
       </Table>
-      {updateActive ? <BookEdit bookToUpdate={bookToUpdate} updateOff={updateOff} fetchBooks={fetchBooks} /> : <></>}
+      {updateActive ? <BookInfo book={bookToUpdate} bookToUpdate={bookToUpdate} updateOff={updateOff} fetchBooks={fetchBooks} /> : <></>}
     </>
   );
 };

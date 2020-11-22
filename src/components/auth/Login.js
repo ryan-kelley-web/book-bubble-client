@@ -27,7 +27,7 @@ const Login = (props) => {
 
     return (
         <div>
-            <h1>Login</h1>
+            <h1 class="text-primary">Login</h1>
             <input
                 type="email"
                 name="email"

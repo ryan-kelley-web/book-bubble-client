@@ -2,7 +2,14 @@ body {
     margin: 30px;
 }
 
-h1, h2 {
+/* h1, h2 {
     color: blue;
+} */
+
+
+.authContainer{
+    /* background-image: url(./bubbleLogo.jfif); */
+    background-repeat: no-repeat;
+    margin: 35px;
 }
 

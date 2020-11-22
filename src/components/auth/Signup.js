@@ -66,8 +66,8 @@ const Signup = (props) => {
             <br />
             <br />
             <Button onClick={signupButton} color="primary"  >Submit</Button>
-            <br />
-            <br/><br/><br/><br/>
+            {/* <br /> */}
+            {/* <br/><br/><br/><br/> */}
         </form>
     )
 };

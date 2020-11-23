@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import {Button, Form, FormGroup, Label, Container, Row, Col, Progress, Modal, ModalBody} from 'reactstrap';
 import './Book.css';
+import API_URL from '../../env';
 
 
 const BookInfo = (props) => {
 
     const deleteBook = (book) => {
         console.log("Delete book id:", book.id);
-        const url = `http://localhost:5000/book/${book.id}`;
+        const url = `${API_URL}/book/${book.id}`;
         const options = {
             method: 'DELETE', 
             headers: new Headers({

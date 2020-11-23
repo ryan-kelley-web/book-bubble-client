@@ -3,6 +3,7 @@ import {Table, Button} from 'reactstrap';
 import API_URL from '../../env';
 import BookEdit from '../Books/BookEdit';
 import BookInfo from '../Books/BookInfo';
+import './shelves.css';
 
 const Read = (props) => { 
 
@@ -56,9 +57,9 @@ const Read = (props) => {
         return books.map((book, index) => { 
             return(
                 <tr key={index}>
-                    <td>{book.title}</td>
-                    <td>{book.author}</td>
-                    <td>{book.year_published}</td>
+                    <td className='shelfText'>{book.title}</td>
+                    <td className='shelfText'>{book.author}</td>
+                    <td className='shelfText'>{book.year_published}</td>
                     <td>
                     <Button color="primary" onClick={()=> {editUpdateBook(book); infoOn()}}>More Info</Button>
                     </td>
@@ -68,24 +69,24 @@ const Read = (props) => {
     }
 
  return (
-    <>
-      <h3>Books Read</h3>
+    <div className='container'>
+      <h3 className='shelfHeader'>Books Read</h3>
       <hr />
       <Table striped className="table">
         <thead>
           <tr>
-            <th sm="6">Title</th>
-            <th sm="6">Author</th>
-            <th sm="6">Year Published</th>
+            <th sm="6" className='shelfText'>Title</th>
+            <th sm="6" className='shelfText'>Author</th>
+            <th sm="6" className='shelfText'>Year Published</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className='text-primary'>
           {bookMapper()}
         </tbody>
       </Table>
       {infoActive ? <BookInfo book={bookToUpdate} infoOff={infoOff} updateOn={updateOn} updateOff={updateOff} fetchBooks={fetchBooks} token={props.token} /> : <></>}
       {updateActive ? <BookEdit bookToUpdate={bookToUpdate} infoOff={infoOff} updateOff={updateOff} fetchBooks={fetchBooks} token={props.token} /> : <></>}
-    </>
+    </div>
   );
 };
 

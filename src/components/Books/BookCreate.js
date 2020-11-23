@@ -152,21 +152,21 @@ const BookCreate = (props) => {
   return (
     <Modal isOpen={true}>
       <ModalBody>
-      <h3>Create A Book</h3>
+      <h3 className='bookModalHeader'>Create A Book</h3>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
-          <Button onClick={props.createOff}>X</Button>
+          <Button onClick={props.createOff} color='primary'>X</Button>
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="author">*Author:</Label>
+          <Label htmlFor="author" className='text-primary bookModalText'>*Author:</Label>
           <Input name='author' value={author} onChange={e => setAuthor(e.target.value)} />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="title">*Title:</Label>
+          <Label htmlFor="title" className='text-primary bookModalText'>*Title:</Label>
           <Input name='title' value={title} onChange={e => setTitle(e.target.value)} />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="genre">Genre:</Label>
+          <Label htmlFor="genre" className='text-primary bookModalText'>Genre:</Label>
           <Input type='select' name='genre' value={genre} onChange={e => setGenre(e.target.value)}>
             <option value={null}></option>
             <option value="Fantasy">Fantasy</option>
@@ -178,19 +178,19 @@ const BookCreate = (props) => {
           </Input>
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="numOfPages">Total Number Of Pages:</Label>
+          <Label htmlFor="numOfPages" className='text-primary bookModalText'>Total Number Of Pages:</Label>
           <Input name="numOfPages" value={numOfPages} onChange={(e) => setNumOfPages(e.target.value)} />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="yearPublished">Year Published:</Label>
+          <Label htmlFor="yearPublished" className='text-primary bookModalText'>Year Published:</Label>
           <Input name="yearPublished" value={yearPublished} onChange={(e) => setYearPublished(e.target.value)} />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="description">Book Description:</Label>
+          <Label htmlFor="description" className='text-primary bookModalText'>Book Description:</Label>
           <Input name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="readStatus">*Book Status:</Label>
+          <Label htmlFor="readStatus" className='text-primary bookModalText'>*Book Status:</Label>
           <Input type="select" name="readStatus" value={readStatus} onChange={(e) => setReadStatus(e.target.value)}>
             <option value={null}></option>
             <option value="read">Already Read</option>
@@ -199,7 +199,7 @@ const BookCreate = (props) => {
           </Input>
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="rating">Rating:</Label>
+          <Label htmlFor="rating" className='text-primary bookModalText'>Rating:</Label>
           <Input type="select" name="rating" value={rating} onChange={(e) => setRating(e.target.value)}>
             <option value={null}></option>
             <option value="0">0</option>
@@ -210,7 +210,7 @@ const BookCreate = (props) => {
             <option value="5">5</option>
           </Input>
         </FormGroup>
-        {title && author && readStatus ? <Button type="submit">Add Book</Button> : <></>}
+        {title && author && readStatus ? <Button type="submit" color='primary' className='bookModalHeader'>Add Book</Button> : <></>}
       </Form>
       </ModalBody>
     </Modal>

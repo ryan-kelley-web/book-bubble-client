@@ -98,3 +98,23 @@
 .page2{
     margin-left: 310px;
 }
+
+.deleteBtn{
+    margin-left: 10px;
+}
+
+.editInput{
+    opacity: 0.6;
+}
+
+.infoLabel{
+    margin-left: 3px;
+}
+
+.bookModalHeader{
+    font-family: 'Nerko One', cursive;
+}
+
+.bookModalText{
+    font-family: 'Xanh Mono', monospace;
+}

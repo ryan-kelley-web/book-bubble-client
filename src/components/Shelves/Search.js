@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {Table, Button} from 'reactstrap'; //figure out how to do this with material UI
 import BookEdit from '../Books/BookEdit'; //will need to match the component we "link to" with the button
 import API_URL from '../../env';
+import BookInfo from '../Books/BookInfo';
+import './shelves.css';
 
 const Search = (props) => { 
 
@@ -9,6 +11,7 @@ const Search = (props) => {
     const [query, setQuery] = useState('');
     const [updateActive, setUpdateActive] = useState(false);
     const [bookToUpdate, setBookToUpdate] = useState({});
+    const [infoActive, setInfoActive] = useState(false);
 
     const fetchBooks = () => {
         fetch(`${API_URL}/book/search/${query}`, { 
@@ -38,6 +41,14 @@ const Search = (props) => {
       setUpdateActive(false);
     }
 
+    const infoOn = () => {
+      setInfoActive(true);
+    }
+
+    const infoOff = () => {
+      setInfoActive(false);
+    }
+
     const clearResults = () => {
       setBooks([]);
       setQuery('');
@@ -47,11 +58,11 @@ const Search = (props) => {
         return books.map((book, index) => { 
             return(
                 <tr key={index}>
-                    <td>{book.title}</td>
-                    <td>{book.author}</td>
-                    <td>{book.year_published}</td>
+                    <td className='shelfText'>{book.title}</td>
+                    <td className='shelfText'>{book.author}</td>
+                    <td className='shelfText'>{book.year_published}</td>
                     <td>
-                    <Button color="primary" onClick={()=> {editUpdateBook(book); updateOn()}}>Edit Book</Button>
+                    <Button color="primary" onClick={()=> {editUpdateBook(book); infoOn()}}>More Info</Button>
                     </td>
                 </tr>
             )
@@ -60,24 +71,26 @@ const Search = (props) => {
 
  return (
     <>
-      <h3>BookFinder</h3>
+      <h3 className='shelfHeader'>BookFinder</h3>
       { books.length > 0
       ? (
         <div>
         <Table striped className="table">
         <thead>
           <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Year Published</th>
+            <th className='shelfText'>Title</th>
+            <th className='shelfText'>Author</th>
+            <th className='shelfText'>Year Published</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className='text-primary'>
           {bookMapper()}
         </tbody>
       </Table>
+      {infoActive ? <BookInfo book={bookToUpdate} infoOff={infoOff} updateOn={updateOn} updateOff={updateOff} fetchBooks={fetchBooks} token={props.token} /> : <></>}
+      {updateActive ? <BookEdit bookToUpdate={bookToUpdate} infoOff={infoOff} updateOff={updateOff} fetchBooks={fetchBooks} token={props.token} /> : <></>}
        <br/><br/>
-       <Button color="primary" onClick={clearResults}>Clear Results</Button>
+       <Button color="primary" className='clearSearchBtn' onClick={clearResults}>Clear Results</Button>
        </div> 
       )
       : (

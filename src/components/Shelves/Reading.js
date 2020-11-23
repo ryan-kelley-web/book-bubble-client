@@ -56,9 +56,9 @@ const Reading = (props) => {
         return books.map((book, index) => { 
             return(
                 <tr key={index}>
-                    <td>{book.title}</td>
-                    <td>{book.author}</td>
-                    <td>{book.year_published}</td>
+                    <td className='shelfText'>{book.title}</td>
+                    <td className='shelfText'>{book.author}</td>
+                    <td className='shelfText'>{book.year_published}</td>
                     <td>
                     <Button color="primary" onClick={()=> {editUpdateBook(book); infoOn()}}>More Info</Button>
                     </td>
@@ -70,17 +70,17 @@ const Reading = (props) => {
 
  return (
     <>
-      <h3>Books Reading</h3>
+      <h3 className='shelfHeader'>Books Reading</h3>
       <hr />
       <Table striped>
         <thead>
           <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Year Published</th>
+            <th className='shelfText'>Title</th>
+            <th className='shelfText'>Author</th>
+            <th className='shelfText'>Year Published</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className='text-primary'>
           {bookMapper()}
         </tbody>
       </Table>

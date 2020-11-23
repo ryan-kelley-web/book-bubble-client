@@ -1,3 +1,21 @@
 .appTitle{
     text-align: center;
+    font-family: 'Nerko One', cursive;
+}
+
+.happy{
+    /* background-color: lightgray; */
+    background-color: rgba(211, 211, 211, 0.85);
+    border-radius: 5%;
+    /* opacity: 0.7; */
+}
+
+.modalText{
+    font-family: 'Xanh Mono', monospace;
+    font-size: large;
+}
+
+.bubbleText{
+    font-family: 'Nerko One', cursive;
+    font-size: larger;
 }

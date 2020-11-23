@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Nav, NavItem, Button, NavLink } from "reactstrap";
 import { Link } from "react-router-dom";
+import './BubbleBar.css'
 
 export default function BubbleBar(props) {
 
@@ -11,7 +12,7 @@ export default function BubbleBar(props) {
   // };
 
   return (
-      <div>
+      <div className='navBar'>
         <h2>BubbleBar</h2>
         <Nav vertical>
           <NavItem>
@@ -32,7 +33,7 @@ export default function BubbleBar(props) {
           </NavItem>
             <br />
         </Nav>
-        <Button color="primary" onClick={props.clickLogout}>Log Out</Button>
+        <Button color="primary" className='logoutBtn' onClick={props.clickLogout}>Log Out</Button>
       </div>
   );
 }

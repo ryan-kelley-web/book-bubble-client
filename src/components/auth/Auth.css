@@ -2,14 +2,20 @@ body {
     margin: 30px;
 }
 
-/* h1, h2 {
-    color: blue;
-} */
-
-
 .authContainer{
-    /* background-image: url(./bubbleLogo.jfif); */
+    /* background-image: url(./bubbleLogo.jfif);
     background-repeat: no-repeat;
-    margin: 35px;
+    margin: 35px; */
+    /* background-color: whitesmoke; */
+    font-family: 'Nerko One', cursive;
 }
 
+.authLogo{
+    height: 500px;
+    width: 500px;
+    align-items: center;
+}
+
+.imgRow{
+    margin-top: 20px;
+}

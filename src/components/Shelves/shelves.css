@@ -1,0 +1,17 @@
+.container{
+    /* background-color: lightgray; */
+    /* background-color: lightgreen; */
+    border-radius: 5%;
+}
+
+.shelfText{
+    font-family: 'Xanh Mono', monospace;
+}
+
+.shelfHeader{
+    font-family: 'Nerko One', cursive;
+}
+
+.clearSearchBtn{
+    margin-bottom: 15px;
+}

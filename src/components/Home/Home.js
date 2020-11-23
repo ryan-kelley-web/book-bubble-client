@@ -35,7 +35,7 @@ export default function Home(props) {
 
         <div>
 
-            <h1 className='appTitle'>BookBubble</h1>
+            <h1 class='appTitle text-primary'>BookBubble</h1>
             <Container>
                 <Row>
                     <Col md="9">
@@ -53,7 +53,7 @@ export default function Home(props) {
                                 <Col sm="3">
                                     <BubbleBar clickLogout={props.clickLogout} createOn={createOn} />
                                 </Col>
-                                <Col >
+                                <Col className='happy'>
                                     <Switch>
                                         <Route path="/book/create">
                                             {createOpen ? 

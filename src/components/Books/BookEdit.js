@@ -45,23 +45,23 @@ const BookEdit = (props) => {
 
     return (
         <Modal isOpen={true}>
-            <ModalHeader>Currently Editing "{props.bookToUpdate.title}"</ModalHeader>
+            <ModalHeader>Currently Editing <span className='text-primary'>"{props.bookToUpdate.title}"</span></ModalHeader>
             <ModalBody>
                 <Form onSubmit={handleSubmit}>
                     <FormGroup>
-                        <Button onClick={props.updateOff}>X</Button>
+                        <Button onClick={props.updateOff} color='primary'>X</Button>
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='author'>Edit Author:</Label>
-                        <Input name='author' value={editAuthor} onChange={e => setEditAuthor(e.target.value)} />
+                        <Label htmlFor='author' className='text-primary'>Edit Author:</Label>
+                        <Input name='author' className='editInput' value={editAuthor} onChange={e => setEditAuthor(e.target.value)} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='title'>Edit Title:</Label>
-                        <Input name='title' value={editTitle} onChange={e => setEditTitle(e.target.value)} />
+                        <Label htmlFor='title' className='text-primary'>Edit Title:</Label>
+                        <Input name='title' className='editInput' value={editTitle} onChange={e => setEditTitle(e.target.value)} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='genre'>Edit Genre:</Label>
-                        <Input type='select' name='genre' value={editGenre} onChange={e => setEditGenre(e.target.value)}>
+                        <Label htmlFor='genre' className='text-primary'>Edit Genre:</Label>
+                        <Input type='select' className='editInput' name='genre' value={editGenre} onChange={e => setEditGenre(e.target.value)}>
                             <option value="Fantasy">Fantasy</option>
                             <option value="Mystery">Mystery</option>
                             <option value="Romance">Romance</option>
@@ -71,28 +71,28 @@ const BookEdit = (props) => {
                         </Input>
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='numOfPages'>Edit Total Number Of Pages:</Label>
-                        <Input name='numOfPages' value={editNumOfPages} onChange={e => setEditNumOfPages(e.target.value)} />
+                        <Label htmlFor='numOfPages' className='text-primary'>Edit Total Number Of Pages:</Label>
+                        <Input name='numOfPages' className='editInput' value={editNumOfPages} onChange={e => setEditNumOfPages(e.target.value)} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='yearPublished'>Edit Year Published:</Label>
-                        <Input name='yearPublished' value={editYearPublished} onChange={e => setEditYearPublished(e.target.value)} />
+                        <Label htmlFor='yearPublished' className='text-primary'>Edit Year Published:</Label>
+                        <Input name='yearPublished' className='editInput' value={editYearPublished} onChange={e => setEditYearPublished(e.target.value)} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='description'>Edit Book Description:</Label>
-                        <Input name='description' value={editDescription} onChange={e => setEditDescription(e.target.value)} />
+                        <Label htmlFor='description' className='text-primary'>Edit Book Description:</Label>
+                        <Input name='description' className='editInput' value={editDescription} onChange={e => setEditDescription(e.target.value)} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='readStatus'>Book Status:</Label>
-                        <Input type='select' name='readStatus' value={editReadStatus} onChange={e => setEditReadStatus(e.target.value)}>
+                        <Label htmlFor='readStatus' className='text-primary'>Book Status:</Label>
+                        <Input type='select' name='readStatus' className='editInput' value={editReadStatus} onChange={e => setEditReadStatus(e.target.value)}>
                             <option value='read'>Already Read</option>
                             <option value='reading'>Currently Reading</option>
                             <option value='to-read'>Wanting To Read</option>
                         </Input>
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='rating'>Edit Rating:</Label>
-                        <Input type='select' name='rating' value={editRating} onChange={e => setEditRating(e.target.value)}>
+                        <Label htmlFor='rating' className='text-primary'>Edit Rating:</Label>
+                        <Input type='select' name='rating' className='editInput' value={editRating} onChange={e => setEditRating(e.target.value)}>
                             <option value='0'>0</option>
                             <option value='1'>1</option>
                             <option value='2'>2</option>
@@ -101,7 +101,7 @@ const BookEdit = (props) => {
                             <option value='5'>5</option>
                         </Input>
                     </FormGroup>
-                    <Button type='submit'>Update Book</Button>
+                    <Button type='submit'color='primary'>Update Book</Button>
                     {/* <Button type='submit' onClick={()=> {props.updateOff()}}>Update Book</Button> */}
                 </Form>
             </ModalBody>

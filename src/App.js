@@ -14,6 +14,7 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-ro
 import BookCreate from './components/Books/BookCreate';
 import BookEdit from './components/Books/BookEdit';
 import BookInfo from './components/Books/BookInfo';
+import BottomBook from './bottomLogo.jpg';
 
 
 
@@ -72,14 +73,11 @@ function App() {
   //LC addded the line running protectedViews also
   return (
 
-    
-      <div>
+      <div className='mainDiv'>
         {/* <Auth updateToken={updateToken} /> */}
         {protectedViews()}
         {/* {console.log('App Session Token:', sessionToken)} */}
-     
       </div>
- 
   );
   }
 

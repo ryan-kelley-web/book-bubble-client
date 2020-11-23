@@ -6,7 +6,7 @@ switch(window.location.hostname){
         API_URL = 'http://localhost:5000';
         break;
     case 'book-bubble.herokuapp.com':
-        API_URL = 'http://book-bubble-server.herokuapp.com';
+        API_URL = 'https://book-bubble-server.herokuapp.com';
         break;
 }
 
